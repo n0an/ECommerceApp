@@ -13,4 +13,5 @@ target 'ECommerceApp' do
   pod 'Firebase/Storage'
 
   pod 'Backendless'
+  pod 'OneSignal'
 end
