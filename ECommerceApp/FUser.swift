@@ -226,10 +226,77 @@ func userDictionaryFrom(user: FUser) -> [String: Any] {
     
 }
 
+func updateCurrentUser(withValues values: [String: Any], withBlock: @escaping (_ success: Bool) -> Void) {
+    
+    if UserDefaults.standard.object(forKey: kCURRENTUSER) != nil {
+        
+        let currentUser = FUser.currentUser()!
+        
+        var userObjectDict = userDictionaryFrom(user: currentUser)
+        
+        for key in values.keys {
+            userObjectDict[key] = values[key]
+        }
+        
+        let ref = firebase.child(kUSER).child(currentUser.objectID)
+        
+        ref.updateChildValues(values, withCompletionBlock: { (error, ref) in
+            
+            if error != nil {
+                withBlock(false)
+                return
+            }
+            
+            UserDefaults.standard.setValue(userObjectDict, forKey: kCURRENTUSER)
+            
+            UserDefaults.standard.synchronize()
+            
+            withBlock(true)
+            
+        })
+        
+    }
+    
+}
+
+// MARK: OneSignal
+
+func updateOneSignalId() {
+    
+    if FUser.currentUser() != nil {
+        
+        if let pushId = UserDefaults.standard.string(forKey: "OneSignalId") {
+            
+            setOneSignalId(pushId: pushId)
+            
+        } else {
+            
+            removeOneSignalId()
+            
+        }
+        
+    }
+    
+}
 
 
+func setOneSignalId(pushId: String) {
+    updateCurrentUserOneSignalId(newId: pushId)
+    
+}
 
+func removeOneSignalId() {
+    updateCurrentUserOneSignalId(newId: "")
 
+}
+
+func updateCurrentUserOneSignalId(newId: String) {
+    updateCurrentUser(withValues: [kPUSHID: newId, kUPDATEDAT: dateFormatter().string(from: Date())]) { (success) in
+        
+        print("One signal Id was updated - \(success)")
+        
+    }
+}
 
 
 

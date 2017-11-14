@@ -16,6 +16,8 @@
 		18259C751FBA3687007456A3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 18259C741FBA3687007456A3 /* Assets.xcassets */; };
 		18259C781FBA3687007456A3 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 18259C761FBA3687007456A3 /* LaunchScreen.storyboard */; };
 		18259C801FBA3794007456A3 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 18259C7F1FBA3794007456A3 /* GoogleService-Info.plist */; };
+		1858C0D21FBB7C8B00F1398F /* ProgressHUD.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 1858C0CF1FBB7C8B00F1398F /* ProgressHUD.bundle */; };
+		1858C0D31FBB7C8B00F1398F /* ProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 1858C0D11FBB7C8B00F1398F /* ProgressHUD.m */; };
 		93A96A989C4EF60F7297AB84 /* Pods_ECommerceApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 76D5240AF3E8C3E1CB6B60D3 /* Pods_ECommerceApp.framework */; };
 /* End PBXBuildFile section */
 
@@ -34,6 +36,9 @@
 		18259C771FBA3687007456A3 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		18259C791FBA3687007456A3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		18259C7F1FBA3794007456A3 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		1858C0CF1FBB7C8B00F1398F /* ProgressHUD.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = ProgressHUD.bundle; sourceTree = "<group>"; };
+		1858C0D01FBB7C8B00F1398F /* ProgressHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProgressHUD.h; sourceTree = "<group>"; };
+		1858C0D11FBB7C8B00F1398F /* ProgressHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProgressHUD.m; sourceTree = "<group>"; };
 		76D5240AF3E8C3E1CB6B60D3 /* Pods_ECommerceApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ECommerceApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		83D2C74B81F689F3744313A5 /* Pods-ECommerceApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ECommerceApp.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ECommerceApp/Pods-ECommerceApp.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -92,8 +97,19 @@
 				18259C791FBA3687007456A3 /* Info.plist */,
 				18259C7F1FBA3794007456A3 /* GoogleService-Info.plist */,
 				1565483B1FBAEB3700605F43 /* ECommerceApp-Bridging-Header.h */,
+				1858C0CE1FBB7C8B00F1398F /* ProgressHUD */,
 			);
 			path = ECommerceApp;
+			sourceTree = "<group>";
+		};
+		1858C0CE1FBB7C8B00F1398F /* ProgressHUD */ = {
+			isa = PBXGroup;
+			children = (
+				1858C0CF1FBB7C8B00F1398F /* ProgressHUD.bundle */,
+				1858C0D01FBB7C8B00F1398F /* ProgressHUD.h */,
+				1858C0D11FBB7C8B00F1398F /* ProgressHUD.m */,
+			);
+			path = ProgressHUD;
 			sourceTree = "<group>";
 		};
 		D8A837371397316DDFF162F4 /* Frameworks */ = {
@@ -175,6 +191,7 @@
 				18259C781FBA3687007456A3 /* LaunchScreen.storyboard in Resources */,
 				18259C801FBA3794007456A3 /* GoogleService-Info.plist in Resources */,
 				18259C751FBA3687007456A3 /* Assets.xcassets in Resources */,
+				1858C0D21FBB7C8B00F1398F /* ProgressHUD.bundle in Resources */,
 				18259C731FBA3687007456A3 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -246,6 +263,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1858C0D31FBB7C8B00F1398F /* ProgressHUD.m in Sources */,
 				18259C6E1FBA3687007456A3 /* AppDelegate.swift in Sources */,
 				15E9B2951FBAF09100D1141C /* Constants.swift in Sources */,
 				15E9B2971FBAF2D800D1141C /* RegisterViewController.swift in Sources */,

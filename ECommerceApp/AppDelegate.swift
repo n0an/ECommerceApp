@@ -13,10 +13,10 @@ import OneSignal
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
-
+    
     var window: UIWindow?
-
-
+    
+    
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         
         let APP_ID = "595DEAA1-3065-B102-FFC0-4C109C343C00"
@@ -28,6 +28,29 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         OneSignal.initWithLaunchOptions(launchOptions, appId: kONESIGNALAPPID, handleNotificationReceived: nil, handleNotificationAction: nil, settings: nil)
         
+        Auth.auth().addStateDidChangeListener { (auth, user) in
+            
+            if user != nil {
+                if UserDefaults.standard.object(forKey: kCURRENTUSER) != nil {
+                    DispatchQueue.main.async {
+                        NotificationCenter.default.post(name: NSNotification.Name("UserDidLoginNotification"), object: nil, userInfo: ["userId": FUser.currentId()])
+                    }
+                }
+            }
+            
+        }
+        
+        NotificationCenter.default.addObserver(forName: NSNotification.Name("UserDidLoginNotification"), object: nil, queue: nil) { (notification) in
+            
+            let userId = notification.userInfo!["userId"] as! String
+            
+            UserDefaults.standard.set(userId, forKey: "userId")
+            UserDefaults.standard.synchronize()
+            
+            self.onUserDidLogin(userId: userId)
+            
+        }
+        
         if #available(iOS 10.0, *) {
             
             let center = UNUserNotificationCenter.current()
@@ -37,10 +60,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             })
             
             application.registerForRemoteNotifications()
-
+            
         }
         
-    
+        
         return true
     }
     
@@ -66,8 +89,34 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
     
     
-
-
+    
+    func onUserDidLogin(userId: String) {
+        // start OneSignal
+        
+        startOneSignal()
+        
+        
+    }
+    
+    func startOneSignal() {
+        let status: OSPermissionSubscriptionState = OneSignal.getPermissionSubscriptionState()
+        
+        let userID = status.subscriptionStatus.userId
+        let pushToken = status.subscriptionStatus.pushToken
+        
+        if let userID = userID, pushToken != nil {
+            UserDefaults.standard.set(userID, forKey: "OneSignalId")
+        } else {
+            UserDefaults.standard.removeObject(forKey: "OneSignalId")
+        }
+        
+        // save to user object
+        updateOneSignalId()
+    }
+    
+    
+    
+    
 }
 
 
