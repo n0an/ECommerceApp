@@ -12,5 +12,5 @@ target 'ECommerceApp' do
   pod 'Firebase/Auth'
   pod 'Firebase/Storage'
 
-
+  pod 'Backendless'
 end
