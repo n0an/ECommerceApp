@@ -26,6 +26,7 @@
 		15E9B2961FBAF2D800D1141C /* RegisterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterViewController.swift; sourceTree = "<group>"; };
 		15E9B2981FBB022D00D1141C /* FUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FUser.swift; sourceTree = "<group>"; };
 		15E9B29A1FBB058600D1141C /* Settings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Settings.swift; sourceTree = "<group>"; };
+		15E9B29C1FBB251600D1141C /* ECommerceApp.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = ECommerceApp.entitlements; sourceTree = "<group>"; };
 		18259C6A1FBA3687007456A3 /* ECommerceApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ECommerceApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		18259C6D1FBA3687007456A3 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		18259C721FBA3687007456A3 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -79,6 +80,7 @@
 		18259C6C1FBA3687007456A3 /* ECommerceApp */ = {
 			isa = PBXGroup;
 			children = (
+				15E9B29C1FBB251600D1141C /* ECommerceApp.entitlements */,
 				18259C6D1FBA3687007456A3 /* AppDelegate.swift */,
 				15E9B29A1FBB058600D1141C /* Settings.swift */,
 				15E9B2941FBAF09100D1141C /* Constants.swift */,
@@ -139,6 +141,11 @@
 						CreatedOnToolsVersion = 9.1;
 						LastSwiftMigration = 0910;
 						ProvisioningStyle = Automatic;
+						SystemCapabilities = {
+							com.apple.Push = {
+								enabled = 1;
+							};
+						};
 					};
 				};
 			};
@@ -382,6 +389,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_ENTITLEMENTS = ECommerceApp/ECommerceApp.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 358V8FBM3U;
 				INFOPLIST_FILE = ECommerceApp/Info.plist;
@@ -402,6 +410,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_ENTITLEMENTS = ECommerceApp/ECommerceApp.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 358V8FBM3U;
 				INFOPLIST_FILE = ECommerceApp/Info.plist;

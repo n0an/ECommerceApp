@@ -29,14 +29,14 @@ class FUser {
     
     var avatar: String
     
-    var phoneNumber = ""
+    var phoneNumber: String
     var additionalPhoneNumber = ""
     
     var isAgent = false
     
     var favoriteProperties = [String]()
     
-    init(objectID: String, pushID: String?, createdAt: Date, updatedAt: Date, firstName: String, lastName: String, avatar: String = "") {
+    init(objectID: String, pushID: String?, createdAt: Date, updatedAt: Date, firstName: String, lastName: String, avatar: String = "", phoneNumber: String = "") {
         self.objectID = objectID
         self.pushID = pushID
         self.createdAt = createdAt
@@ -46,6 +46,8 @@ class FUser {
         self.lastName = lastName
         
         self.avatar = avatar
+        
+        self.phoneNumber = phoneNumber
         
     }
     
@@ -109,9 +111,12 @@ class FUser {
             
             let fUser = FUser(objectID: firUser!.uid, pushID: "", createdAt: Date(), updatedAt: Date(), firstName: firstName, lastName: lastName)
             
-            UserDefaults.standard.set(fUser, forKey: kCURRENTUSER)
-            UserDefaults.standard.synchronize()
-            
+            // save to user defaults
+            saveUserLocally(fUser: fUser)
+           
+            // save to firebase
+            saveUserToFirebase(fUser: fUser)
+        
             
             completion(error)
             
@@ -120,9 +125,108 @@ class FUser {
         
     }
     
+    class func registerUserWith(phoneNumber: String, verificationCode: String, completion: @escaping (_ error: Error?, _ shouldLogin: Bool) -> Void) {
+        
+        let verificationID = UserDefaults.standard.value(forKey: kVERIFICATIONCODE) as! String
+        let credentials = PhoneAuthProvider.provider().credential(withVerificationID: verificationID, verificationCode: verificationCode)
+        
+        Auth.auth().signIn(with: credentials) { (firUser, error) in
+            
+            if error != nil {
+                completion(error, false)
+                return
+            }
+            
+            // check if user is logged in else register
+            
+            fetchUserWith(userId: (firUser?.uid)!, completion: { (user) in
+                
+                if user != nil && user!.firstName != "" {
+                    // we have a user, login now
+                    saveUserLocally(fUser: user!)
+                    completion(error, true)
+                    
+                } else {
+                    
+                    // we have no user, register new one
+                    let fUser = FUser(objectID: (firUser?.uid)!, pushID: "", createdAt: Date(), updatedAt: Date(), firstName: "", lastName: "", phoneNumber: firUser!.phoneNumber!)
+                    
+                    saveUserLocally(fUser: fUser)
+                    saveUserToFirebase(fUser: fUser)
+                    
+                    completion(error, false)
+                    
+                }
+            })
+            
+        }
+        
+    }
+    
     
     
 }
+
+func saveUserToFirebase(fUser: FUser) {
+    let ref = firebase.child(kUSER).child(fUser.objectID)
+    ref.setValue(userDictionaryFrom(user: fUser))
+}
+
+func saveUserLocally(fUser: FUser) {
+    UserDefaults.standard.set(userDictionaryFrom(user: fUser), forKey: kCURRENTUSER)
+    UserDefaults.standard.synchronize()
+}
+
+// MARK: - HELPER FUNCTIONS
+
+func fetchUserWith(userId: String, completion: @escaping (_ user: FUser?) -> Void) {
+    
+    firebase.child(kUSER).queryOrdered(byChild: kOBJECTID).queryEqual(toValue: userId).observeSingleEvent(of: .value) { (snapshot) in
+        
+        if snapshot.exists() {
+            guard let userDict = snapshot.value as? [String: Any] else { return }
+            
+            let user = FUser(dict: userDict)
+            
+            completion(user)
+            
+        } else {
+            completion(nil)
+        }
+        
+        
+    }
+    
+    
+}
+
+func userDictionaryFrom(user: FUser) -> [String: Any] {
+    
+    let createdAt = dateFormatter().string(from: user.createdAt)
+    let updatedAt = dateFormatter().string(from: user.updatedAt)
+    
+    let dict = [
+        kOBJECTID:  user.objectID,
+        kCREATEDAT: createdAt,
+        kUPDATEDAT: updatedAt,
+        kCOMPANY:   user.companyName,
+        kPUSHID:    user.pushID!,
+        kFIRSTNAME: user.firstName,
+        kLASTNAME:  user.lastName,
+        kFULLNAME:  user.fullName,
+        kAVATAR:    user.avatar,
+        kPHONE:     user.phoneNumber,
+        kADDPHONE:  user.additionalPhoneNumber,
+        kISAGENT:   user.isAgent,
+        kCOINS:     user.coins,
+        kFAVORIT:   user.favoriteProperties
+        ] as [String : Any]
+    
+    return dict
+    
+}
+
+
 
 
 
