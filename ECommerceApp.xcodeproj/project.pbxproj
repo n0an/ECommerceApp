@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		15E9B2951FBAF09100D1141C /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15E9B2941FBAF09100D1141C /* Constants.swift */; };
+		15E9B2971FBAF2D800D1141C /* RegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15E9B2961FBAF2D800D1141C /* RegisterViewController.swift */; };
 		18259C6E1FBA3687007456A3 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18259C6D1FBA3687007456A3 /* AppDelegate.swift */; };
 		18259C701FBA3687007456A3 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18259C6F1FBA3687007456A3 /* ViewController.swift */; };
 		18259C731FBA3687007456A3 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 18259C711FBA3687007456A3 /* Main.storyboard */; };
@@ -21,6 +22,7 @@
 		052B37B353C2A71404567A14 /* Pods-ECommerceApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ECommerceApp.release.xcconfig"; path = "Pods/Target Support Files/Pods-ECommerceApp/Pods-ECommerceApp.release.xcconfig"; sourceTree = "<group>"; };
 		1565483B1FBAEB3700605F43 /* ECommerceApp-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "ECommerceApp-Bridging-Header.h"; sourceTree = "<group>"; };
 		15E9B2941FBAF09100D1141C /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		15E9B2961FBAF2D800D1141C /* RegisterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterViewController.swift; sourceTree = "<group>"; };
 		18259C6A1FBA3687007456A3 /* ECommerceApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ECommerceApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		18259C6D1FBA3687007456A3 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		18259C6F1FBA3687007456A3 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -76,6 +78,7 @@
 			isa = PBXGroup;
 			children = (
 				18259C6D1FBA3687007456A3 /* AppDelegate.swift */,
+				15E9B2961FBAF2D800D1141C /* RegisterViewController.swift */,
 				15E9B2941FBAF09100D1141C /* Constants.swift */,
 				18259C6F1FBA3687007456A3 /* ViewController.swift */,
 				18259C711FBA3687007456A3 /* Main.storyboard */,
@@ -236,6 +239,7 @@
 				18259C701FBA3687007456A3 /* ViewController.swift in Sources */,
 				18259C6E1FBA3687007456A3 /* AppDelegate.swift in Sources */,
 				15E9B2951FBAF09100D1141C /* Constants.swift in Sources */,
+				15E9B2971FBAF2D800D1141C /* RegisterViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
