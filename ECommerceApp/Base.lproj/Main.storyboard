@@ -12,7 +12,7 @@
         <!--Register View Controller-->
         <scene sceneID="q9z-nQ-CMr">
             <objects>
-                <viewController id="wAR-1a-j9Q" customClass="RegisterViewController" customModule="ECommerceApp" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="RegisterViewController" id="wAR-1a-j9Q" customClass="RegisterViewController" customModule="ECommerceApp" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="6nm-Bq-nFG">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -49,12 +49,18 @@
                                         <state key="normal" title="Request Code">
                                             <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         </state>
+                                        <connections>
+                                            <action selector="actionRequestButtonTapped:" destination="wAR-1a-j9Q" eventType="touchUpInside" id="YeE-GQ-rCM"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                             </stackView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Dud-Y1-Nnf">
                                 <rect key="frame" x="345" y="20" width="14" height="22"/>
                                 <state key="normal" image="ic_signup_close"/>
+                                <connections>
+                                    <action selector="actionCloseButtonTapped:" destination="wAR-1a-j9Q" eventType="touchUpInside" id="CCP-Sk-LrR"/>
+                                </connections>
                             </button>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Email" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="wxJ-0q-k9u">
                                 <rect key="frame" x="8" y="367" width="359" height="30"/>
@@ -87,6 +93,9 @@
                                 <state key="normal" title="Register">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
+                                <connections>
+                                    <action selector="actionRegisterButtonTapped:" destination="wAR-1a-j9Q" eventType="touchUpInside" id="8lN-N4-MR1"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -116,10 +125,52 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="AAU-O7-8Vo"/>
                     </view>
+                    <connections>
+                        <outlet property="codeTextField" destination="vSZ-tG-dB9" id="YIH-SS-59u"/>
+                        <outlet property="emailTextField" destination="wxJ-0q-k9u" id="OwX-hR-dme"/>
+                        <outlet property="lastNameTextField" destination="o7X-Sc-yAE" id="9c0-xj-a87"/>
+                        <outlet property="nameTextField" destination="YFt-is-Ktn" id="dwv-XW-rkP"/>
+                        <outlet property="passwordTextField" destination="w8S-mZ-Cwv" id="cYV-gh-17n"/>
+                        <outlet property="phoneNumberTextField" destination="lGY-hT-bgI" id="Sa7-b0-yGp"/>
+                        <outlet property="requestButton" destination="7a0-Uy-4RO" id="EBi-BQ-OhO"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="MXQ-H3-EMl" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-4" y="263.11844077961024"/>
+            <point key="canvasLocation" x="793" y="-474"/>
+        </scene>
+        <!--Tab Bar Controller-->
+        <scene sceneID="ESk-7A-2gb">
+            <objects>
+                <tabBarController storyboardIdentifier="MainVC" id="eRT-zd-KbP" sceneMemberID="viewController">
+                    <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="zKG-gS-OR1">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="49"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </tabBar>
+                    <connections>
+                        <segue destination="Y2L-VS-PGG" kind="relationship" relationship="viewControllers" id="ABh-jG-aEl"/>
+                    </connections>
+                </tabBarController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="XjD-C4-CBq" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="794" y="262"/>
+        </scene>
+        <!--Item-->
+        <scene sceneID="p23-8E-TdB">
+            <objects>
+                <viewController id="Y2L-VS-PGG" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="GPs-da-OYZ">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <viewLayoutGuide key="safeArea" id="nz1-05-v9S"/>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="Item" id="LAA-DX-5Kk"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="cIv-NC-RhA" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1583" y="261"/>
         </scene>
     </scenes>
     <resources>

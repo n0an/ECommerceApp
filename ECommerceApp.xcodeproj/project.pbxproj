@@ -9,8 +9,9 @@
 /* Begin PBXBuildFile section */
 		15E9B2951FBAF09100D1141C /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15E9B2941FBAF09100D1141C /* Constants.swift */; };
 		15E9B2971FBAF2D800D1141C /* RegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15E9B2961FBAF2D800D1141C /* RegisterViewController.swift */; };
+		15E9B2991FBB022D00D1141C /* FUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15E9B2981FBB022D00D1141C /* FUser.swift */; };
+		15E9B29B1FBB058700D1141C /* Settings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15E9B29A1FBB058600D1141C /* Settings.swift */; };
 		18259C6E1FBA3687007456A3 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18259C6D1FBA3687007456A3 /* AppDelegate.swift */; };
-		18259C701FBA3687007456A3 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18259C6F1FBA3687007456A3 /* ViewController.swift */; };
 		18259C731FBA3687007456A3 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 18259C711FBA3687007456A3 /* Main.storyboard */; };
 		18259C751FBA3687007456A3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 18259C741FBA3687007456A3 /* Assets.xcassets */; };
 		18259C781FBA3687007456A3 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 18259C761FBA3687007456A3 /* LaunchScreen.storyboard */; };
@@ -23,9 +24,10 @@
 		1565483B1FBAEB3700605F43 /* ECommerceApp-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "ECommerceApp-Bridging-Header.h"; sourceTree = "<group>"; };
 		15E9B2941FBAF09100D1141C /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		15E9B2961FBAF2D800D1141C /* RegisterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterViewController.swift; sourceTree = "<group>"; };
+		15E9B2981FBB022D00D1141C /* FUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FUser.swift; sourceTree = "<group>"; };
+		15E9B29A1FBB058600D1141C /* Settings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Settings.swift; sourceTree = "<group>"; };
 		18259C6A1FBA3687007456A3 /* ECommerceApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ECommerceApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		18259C6D1FBA3687007456A3 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		18259C6F1FBA3687007456A3 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		18259C721FBA3687007456A3 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		18259C741FBA3687007456A3 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		18259C771FBA3687007456A3 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -78,9 +80,10 @@
 			isa = PBXGroup;
 			children = (
 				18259C6D1FBA3687007456A3 /* AppDelegate.swift */,
-				15E9B2961FBAF2D800D1141C /* RegisterViewController.swift */,
+				15E9B29A1FBB058600D1141C /* Settings.swift */,
 				15E9B2941FBAF09100D1141C /* Constants.swift */,
-				18259C6F1FBA3687007456A3 /* ViewController.swift */,
+				15E9B2981FBB022D00D1141C /* FUser.swift */,
+				15E9B2961FBAF2D800D1141C /* RegisterViewController.swift */,
 				18259C711FBA3687007456A3 /* Main.storyboard */,
 				18259C741FBA3687007456A3 /* Assets.xcassets */,
 				18259C761FBA3687007456A3 /* LaunchScreen.storyboard */,
@@ -236,10 +239,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				18259C701FBA3687007456A3 /* ViewController.swift in Sources */,
 				18259C6E1FBA3687007456A3 /* AppDelegate.swift in Sources */,
 				15E9B2951FBAF09100D1141C /* Constants.swift in Sources */,
 				15E9B2971FBAF2D800D1141C /* RegisterViewController.swift in Sources */,
+				15E9B2991FBB022D00D1141C /* FUser.swift in Sources */,
+				15E9B29B1FBB058700D1141C /* Settings.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
