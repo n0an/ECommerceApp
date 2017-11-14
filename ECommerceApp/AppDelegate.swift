@@ -32,24 +32,32 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             
             if user != nil {
                 if UserDefaults.standard.object(forKey: kCURRENTUSER) != nil {
-                    DispatchQueue.main.async {
-                        NotificationCenter.default.post(name: NSNotification.Name("UserDidLoginNotification"), object: nil, userInfo: ["userId": FUser.currentId()])
-                    }
+                    
+                    let userId = FUser.currentId()
+                    
+                    UserDefaults.standard.set(userId, forKey: "userId")
+                    UserDefaults.standard.synchronize()
+                    
+                    self.onUserDidLogin(userId: userId)
+                    
+//                    DispatchQueue.main.async {
+//                        NotificationCenter.default.post(name: NSNotification.Name("UserDidLoginNotification"), object: nil, userInfo: ["userId": FUser.currentId()])
+//                    }
                 }
             }
             
         }
         
-        NotificationCenter.default.addObserver(forName: NSNotification.Name("UserDidLoginNotification"), object: nil, queue: nil) { (notification) in
-            
-            let userId = notification.userInfo!["userId"] as! String
-            
-            UserDefaults.standard.set(userId, forKey: "userId")
-            UserDefaults.standard.synchronize()
-            
-            self.onUserDidLogin(userId: userId)
-            
-        }
+//        NotificationCenter.default.addObserver(forName: NSNotification.Name("UserDidLoginNotification"), object: nil, queue: nil) { (notification) in
+//
+//            let userId = notification.userInfo!["userId"] as! String
+//
+//            UserDefaults.standard.set(userId, forKey: "userId")
+//            UserDefaults.standard.synchronize()
+//
+//            self.onUserDidLogin(userId: userId)
+//
+//        }
         
         if #available(iOS 10.0, *) {
             
@@ -93,12 +101,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func onUserDidLogin(userId: String) {
         // start OneSignal
         
-        startOneSignal()
-        
-        
-    }
-    
-    func startOneSignal() {
         let status: OSPermissionSubscriptionState = OneSignal.getPermissionSubscriptionState()
         
         let userID = status.subscriptionStatus.userId
@@ -112,7 +114,25 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         // save to user object
         updateOneSignalId()
+        
+        
     }
+    
+//    func startOneSignal() {
+//        let status: OSPermissionSubscriptionState = OneSignal.getPermissionSubscriptionState()
+//
+//        let userID = status.subscriptionStatus.userId
+//        let pushToken = status.subscriptionStatus.pushToken
+//
+//        if let userID = userID, pushToken != nil {
+//            UserDefaults.standard.set(userID, forKey: "OneSignalId")
+//        } else {
+//            UserDefaults.standard.removeObject(forKey: "OneSignalId")
+//        }
+//
+//        // save to user object
+//        updateOneSignalId()
+//    }
     
     
     
