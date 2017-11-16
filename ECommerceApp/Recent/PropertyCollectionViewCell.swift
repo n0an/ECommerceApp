@@ -19,14 +19,19 @@ class PropertyCollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var priceLabel: UILabel!
     
     @IBOutlet weak var topAdImageView: UIImageView!
-    
     @IBOutlet weak var soldImageView: UIImageView!
-    
     @IBOutlet weak var loadingIndicator: UIActivityIndicatorView!
     
     
     
-    func generateCell(property: String) {
+    func generateCell(property: Property) {
+        
+        self.titleLabel.text = property.title
+        self.roomLabel.text = "\(property.numberOfRooms)"
+        self.bathroomLabel.text = "\(property.numberOfBathrooms)"
+        self.parkingLabel.text = "\(property.parking)"
+        self.priceLabel.text = "\(property.price)"
+        self.priceLabel.sizeToFit()
         
     }
     
