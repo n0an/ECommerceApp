@@ -16,6 +16,9 @@
 		18259C751FBA3687007456A3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 18259C741FBA3687007456A3 /* Assets.xcassets */; };
 		18259C781FBA3687007456A3 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 18259C761FBA3687007456A3 /* LaunchScreen.storyboard */; };
 		18259C801FBA3794007456A3 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 18259C7F1FBA3794007456A3 /* GoogleService-Info.plist */; };
+		183E08F11FBDB5560035106A /* IDMPhotoBrowser.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 183E08F21FBDB5560035106A /* IDMPhotoBrowser.framework */; };
+		183E08F31FBDB5580035106A /* ImagePicker.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 183E08F41FBDB5580035106A /* ImagePicker.framework */; };
+		183E08F61FBDB9B90035106A /* Downloader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 183E08F51FBDB9B90035106A /* Downloader.swift */; };
 		183EBC211FBCC80D00208AEC /* RecentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 183EBC201FBCC80D00208AEC /* RecentViewController.swift */; };
 		183EBC231FBCC8AB00208AEC /* PropertyCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 183EBC221FBCC8AB00208AEC /* PropertyCollectionViewCell.swift */; };
 		183EBC271FBD71AD00208AEC /* Property.swift in Sources */ = {isa = PBXBuildFile; fileRef = 183EBC261FBD71AD00208AEC /* Property.swift */; };
@@ -40,6 +43,9 @@
 		18259C771FBA3687007456A3 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		18259C791FBA3687007456A3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		18259C7F1FBA3794007456A3 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		183E08F21FBDB5560035106A /* IDMPhotoBrowser.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = IDMPhotoBrowser.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		183E08F41FBDB5580035106A /* ImagePicker.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = ImagePicker.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		183E08F51FBDB9B90035106A /* Downloader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Downloader.swift; sourceTree = "<group>"; };
 		183EBC201FBCC80D00208AEC /* RecentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecentViewController.swift; sourceTree = "<group>"; };
 		183EBC221FBCC8AB00208AEC /* PropertyCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PropertyCollectionViewCell.swift; sourceTree = "<group>"; };
 		183EBC261FBD71AD00208AEC /* Property.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Property.swift; sourceTree = "<group>"; };
@@ -56,6 +62,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				183E08F31FBDB5580035106A /* ImagePicker.framework in Frameworks */,
+				183E08F11FBDB5560035106A /* IDMPhotoBrowser.framework in Frameworks */,
 				93A96A989C4EF60F7297AB84 /* Pods_ECommerceApp.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -115,6 +123,7 @@
 			isa = PBXGroup;
 			children = (
 				15E9B29A1FBB058600D1141C /* Settings.swift */,
+				183E08F51FBDB9B90035106A /* Downloader.swift */,
 				15E9B2941FBAF09100D1141C /* Constants.swift */,
 			);
 			path = Settings;
@@ -159,6 +168,8 @@
 		D8A837371397316DDFF162F4 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				183E08F41FBDB5580035106A /* ImagePicker.framework */,
+				183E08F21FBDB5560035106A /* IDMPhotoBrowser.framework */,
 				76D5240AF3E8C3E1CB6B60D3 /* Pods_ECommerceApp.framework */,
 			);
 			name = Frameworks;
@@ -317,6 +328,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				183E08F61FBDB9B90035106A /* Downloader.swift in Sources */,
 				183EBC271FBD71AD00208AEC /* Property.swift in Sources */,
 				1858C0D31FBB7C8B00F1398F /* ProgressHUD.m in Sources */,
 				183EBC211FBCC80D00208AEC /* RecentViewController.swift in Sources */,

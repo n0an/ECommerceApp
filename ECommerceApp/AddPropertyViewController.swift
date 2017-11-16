@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import ImagePicker
 
 class AddPropertyViewController: UIViewController {
 
@@ -46,6 +47,8 @@ class AddPropertyViewController: UIViewController {
     
     var user: FUser?
     
+    var propertyImages: [UIImage] = []
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -64,7 +67,7 @@ class AddPropertyViewController: UIViewController {
             propertyTypeTextField.text != "" &&
             priceTextField.text != "" {
             
-            var newProperty = Property()
+            let newProperty = Property()
             
             newProperty.referenceCode = referenceCodeTextField.text!
             newProperty.ownerId = user!.objectID
@@ -128,10 +131,19 @@ class AddPropertyViewController: UIViewController {
             newProperty.storeRoom = storeRoomSwitchValue
             newProperty.isFurnished = furnishedSwitchValue
             
-            // check for property images
             
-            newProperty.saveProperty()
-            ProgressHUD.showSuccess("Saved")
+            if !propertyImages.isEmpty {
+                
+                
+            } else {
+                newProperty.saveProperty()
+                ProgressHUD.showSuccess("Saved")
+                
+                dismissView()
+            }
+            
+            
+            
             
             
         } else {
@@ -139,6 +151,11 @@ class AddPropertyViewController: UIViewController {
         }
         
         
+    }
+    
+    func dismissView() {
+        let vc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "MainVC") as! UITabBarController
+        self.present(vc, animated: true, completion: nil)
     }
     
     
@@ -178,6 +195,11 @@ class AddPropertyViewController: UIViewController {
     
     
     @IBAction func actionCameraButtonTapped(_ sender: Any) {
+        let imagePickerController = ImagePickerController()
+        imagePickerController.delegate = self
+        imagePickerController.imageLimit = kMAXIMAGENUMBER
+        
+        self.present(imagePickerController, animated: true)
         
     }
     
@@ -196,7 +218,28 @@ class AddPropertyViewController: UIViewController {
     
     
     
-    
-    
-
 }
+
+// MARK: - ImagePickerDelegate
+extension AddPropertyViewController: ImagePickerDelegate {
+    func wrapperDidPress(_ imagePicker: ImagePickerController, images: [UIImage]) {
+        self.dismiss(animated: true, completion: nil)
+    }
+    
+    func doneButtonDidPress(_ imagePicker: ImagePickerController, images: [UIImage]) {
+        propertyImages = images
+        self.dismiss(animated: true, completion: nil)
+    }
+    
+    func cancelButtonDidPress(_ imagePicker: ImagePickerController) {
+        self.dismiss(animated: true, completion: nil)
+    }
+    
+    
+}
+
+
+
+
+
+
