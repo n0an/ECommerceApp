@@ -46,6 +46,7 @@
 		183E08F21FBDB5560035106A /* IDMPhotoBrowser.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = IDMPhotoBrowser.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		183E08F41FBDB5580035106A /* ImagePicker.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = ImagePicker.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		183E08F51FBDB9B90035106A /* Downloader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Downloader.swift; sourceTree = "<group>"; };
+		183E08F71FBDDC6C0035106A /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		183EBC201FBCC80D00208AEC /* RecentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecentViewController.swift; sourceTree = "<group>"; };
 		183EBC221FBCC8AB00208AEC /* PropertyCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PropertyCollectionViewCell.swift; sourceTree = "<group>"; };
 		183EBC261FBD71AD00208AEC /* Property.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Property.swift; sourceTree = "<group>"; };
@@ -168,6 +169,7 @@
 		D8A837371397316DDFF162F4 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				183E08F71FBDDC6C0035106A /* CoreLocation.framework */,
 				183E08F41FBDB5580035106A /* ImagePicker.framework */,
 				183E08F21FBDB5560035106A /* IDMPhotoBrowser.framework */,
 				76D5240AF3E8C3E1CB6B60D3 /* Pods_ECommerceApp.framework */,

@@ -34,6 +34,7 @@ func downloadImages(urls: String, withBlock block: @escaping (_ images: [UIImage
             
             let data = NSData(contentsOf: url! as URL)
             
+            
             if let data = data {
                 
                 let image = UIImage(data: data as Data)
@@ -42,11 +43,13 @@ func downloadImages(urls: String, withBlock block: @escaping (_ images: [UIImage
                 
                 if downloadCounter == imageArray.count {
                     DispatchQueue.main.async {
+                        
                         block(imageArray)
                     }
                 }
             } else {
                 print("Couldn't download image")
+                
                 block(imageArray)
             }
             

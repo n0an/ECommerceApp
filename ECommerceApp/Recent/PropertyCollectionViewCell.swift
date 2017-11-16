@@ -8,8 +8,9 @@
 
 import UIKit
 
-protocol PropertyCollectionViewCellDelegate:class {
-    func didClickStarButton(property: Property)
+@objc protocol PropertyCollectionViewCellDelegate:class {
+    @objc optional func didClickStarButton(property: Property)
+    @objc optional func didClickMenuButton(property: Property)
 }
 
 class PropertyCollectionViewCell: UICollectionViewCell {
@@ -59,6 +60,13 @@ class PropertyCollectionViewCell: UICollectionViewCell {
         // image
         if let imageLinks = property.imageLinks, imageLinks != "" {
             
+            downloadImages(urls: imageLinks, withBlock: { (images) in
+                self.loadingIndicator.stopAnimating()
+                
+                self.imageView.image = images?.first
+            })
+            
+            
         } else {
             self.imageView.image = UIImage(named: "propertyPlaceholder")
             self.loadingIndicator.stopAnimating()
@@ -79,7 +87,7 @@ class PropertyCollectionViewCell: UICollectionViewCell {
     
     @IBAction func actionStarButtonPressed(_ sender: Any) {
         
-        delegate?.didClickStarButton(property: property)
+        delegate?.didClickStarButton!(property: property)
     }
     
     

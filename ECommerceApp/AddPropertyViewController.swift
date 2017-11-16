@@ -49,6 +49,17 @@ class AddPropertyViewController: UIViewController {
     
     var propertyImages: [UIImage] = []
     
+    var yearArray: [Int] = []
+    var datePicker: UIDatePicker!
+    var propertyTypePicker: UIPickerView!
+    var advertisementTypePicker: UIPickerView!
+    var yearPicker: UIPickerView!
+    
+    var locationManager: CLLocationManager?
+    var locationCoordinates: CLLocationCoordinate2D?
+    
+    var activeField: UITextField?
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -68,6 +79,8 @@ class AddPropertyViewController: UIViewController {
             priceTextField.text != "" {
             
             let newProperty = Property()
+            
+            ProgressHUD.show("Saving...")
             
             newProperty.referenceCode = referenceCodeTextField.text!
             newProperty.ownerId = user!.objectID
@@ -131,25 +144,25 @@ class AddPropertyViewController: UIViewController {
             newProperty.storeRoom = storeRoomSwitchValue
             newProperty.isFurnished = furnishedSwitchValue
             
-            
             if !propertyImages.isEmpty {
+                
+                uploadImages(images: propertyImages, userId: user!.objectID, referenceNumber: newProperty.referenceCode!, withBlock: { (linkString) in
+                    newProperty.imageLinks = linkString
+                    newProperty.saveProperty()
+                    ProgressHUD.showSuccess("Saved")
+                    self.dismissView()
+                })
                 
                 
             } else {
                 newProperty.saveProperty()
                 ProgressHUD.showSuccess("Saved")
-                
                 dismissView()
             }
-            
-            
-            
-            
             
         } else {
             ProgressHUD.showError("Error: Missing required fields")
         }
-        
         
     }
     
@@ -213,10 +226,7 @@ class AddPropertyViewController: UIViewController {
         } else {
             save()
         }
-        
     }
-    
-    
     
 }
 
@@ -238,7 +248,73 @@ extension AddPropertyViewController: ImagePickerDelegate {
     
 }
 
+// MARK: - UITextFieldDelegate
+extension AddPropertyViewController: UITextFieldDelegate {
+    
+}
 
+// MARK: - UIPickerViewDataSource
+extension AddPropertyViewController: UIPickerViewDataSource, UIPickerViewDelegate {
+    
+    func setupPickes() {
+        yearPicker.delegate = self
+        propertyTypePicker.delegate = self
+        advertisementTypePicker.delegate = self
+        datePicker.datePickerMode = .date
+        
+        let toolbar = UIToolbar()
+        toolbar.sizeToFit()
+        
+        let flexibleBarButtonItem = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil)
+        
+        let doneButton = UIBarButtonItem(barButtonSystemItem: .done, target: self, action: #selector(self.toolbarDonePressed))
+        
+        toolbar.setItems([flexibleBarButtonItem, doneButton], animated: true)
+        
+        buildYearTextField.inputAccessoryView = toolbar
+        buildYearTextField.inputView = yearPicker
+        
+        availableFromTextField.inputAccessoryView = toolbar
+        availableFromTextField.inputView = datePicker
+        
+        propertyTypeTextField.inputAccessoryView = toolbar
+        propertyTypeTextField.inputView = propertyTypePicker
+        
+        advertisementTypeTextField.inputAccessoryView = toolbar
+        advertisementTypeTextField.inputView = advertisementTypePicker
+        
+    }
+    
+    @objc func toolbarDonePressed() {
+        self.view.endEditing(true)
+    }
+    
+    func numberOfComponents(in pickerView: UIPickerView) -> Int {
+        return 1
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
+        switch pickerView {
+        case propertyTypePicker:
+            return propertyTypes.count
+        case advertisementTypePicker:
+            return advertismentTypes.count
+        case yearPicker:
+            return yearArray.count
+        default:
+            return 0
+        }
+    }
+    
+    
+    
+    
+}
+
+// MARK: - CLLocationManagerDelegate
+extension AddPropertyViewController: CLLocationManagerDelegate {
+    
+}
 
 
 
