@@ -14,4 +14,9 @@ target 'ECommerceApp' do
 
   pod 'Backendless'
   pod 'OneSignal'
+
+  pod 'ImagePicker'
+  pod 'IDMPhotoBrowser'
+
+
 end
