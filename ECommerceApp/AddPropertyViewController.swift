@@ -73,13 +73,19 @@ class AddPropertyViewController: UIViewController {
         
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        locationManagerStop()
+    }
+    
     // MARK: - HELPER METHODS
     
     func setupYearsArray() {
-        
-//        for year in 1850...2030 {
-//            yearArray.append(year)
-//        }
+   
         yearArray = Array(1800...2030)
         yearArray.reverse()
     }
@@ -151,6 +157,11 @@ class AddPropertyViewController: UIViewController {
                 newProperty.propertyDescription = descriptionTextView.text
             }
             
+            if let coordinate = locationCoordinates {
+                newProperty.latitude = coordinate.latitude
+                newProperty.longitude = coordinate.longitude
+            }
+            
             newProperty.titleDeeds = titleDeedSwitchValue
             newProperty.centralHeating = centralHeatingSwitchValue
             newProperty.solarWaterHeating = solarWaterHeatingSwitchValue
@@ -213,11 +224,18 @@ class AddPropertyViewController: UIViewController {
     
     @IBAction func actionPinLocationButtonTapped(_ sender: Any) {
         
+        let mapViewVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "MapViewController") as! MapViewController
+        
+        mapViewVC.delegate = self
+        
+        self.present(mapViewVC, animated: true, completion: nil)
+        
     }
     
     
     @IBAction func actionCurrentLocationButtonTapped(_ sender: Any) {
-        
+        locationManagerStart()
+
     }
     
     
@@ -393,7 +411,67 @@ extension AddPropertyViewController: UIPickerViewDataSource, UIPickerViewDelegat
 // MARK: - CLLocationManagerDelegate
 extension AddPropertyViewController: CLLocationManagerDelegate {
     
+    func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
+        print("Failed to get the location")
+    }
+    
+    func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
+        switch status {
+        case .notDetermined:
+            manager.requestWhenInUseAuthorization()
+        case .authorizedWhenInUse, .authorizedAlways:
+            manager.startUpdatingLocation()
+        case .restricted:
+            // parental control
+            break
+        case .denied:
+            self.locationManager = nil
+            print("Location denied")
+            ProgressHUD.showError("Please enable location from the Settings")
+        
+        }
+    }
+    
+    
+    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+        
+        self.locationCoordinates = locations.last!.coordinate
+        
+    }
+    
+    func locationManagerStart() {
+        if self.locationManager == nil {
+            self.locationManager = CLLocationManager()
+            self.locationManager?.delegate = self
+            self.locationManager?.desiredAccuracy = kCLLocationAccuracyBest
+            self.locationManager?.requestWhenInUseAuthorization()
+        } else {
+            self.locationManager?.startUpdatingLocation()
+        }
+    }
+    
+    func locationManagerStop() {
+        if self.locationManager != nil {
+            self.locationManager?.stopUpdatingLocation()
+        } else {
+            
+        }
+    }
+    
+    
 }
+
+extension AddPropertyViewController: MapViewControllerDelegate {
+    func didFinishWith(coordinate: CLLocationCoordinate2D) {
+        
+        self.locationCoordinates = coordinate
+        print("coordinates = \(coordinate)")
+    }
+    
+    
+}
+
+
 
 
 
