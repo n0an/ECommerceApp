@@ -435,7 +435,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="oef-fT-sML">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="oef-fT-sML" userLabel="HeaderView">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="75"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="eih-p5-WGo">
@@ -451,24 +451,35 @@
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gBS-oT-dTO">
-                                        <rect key="frame" x="330" y="21" width="37" height="37"/>
-                                        <state key="normal" image="Mixer"/>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gBS-oT-dTO">
+                                        <rect key="frame" x="342" y="27" width="25" height="25"/>
+                                        <state key="normal" image="Camera"/>
                                         <connections>
+                                            <action selector="actionCameraButtonTapped:" destination="Vxk-7f-4GV" eventType="touchUpInside" id="0d9-Ua-6Dk"/>
                                             <action selector="actionMixerButtonTapped:" destination="Y2L-VS-PGG" eventType="touchUpInside" id="rMG-WV-GCR"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nOd-fs-Z6p">
+                                        <rect key="frame" x="301" y="27" width="25" height="25"/>
+                                        <state key="normal" image="save"/>
+                                        <connections>
+                                            <action selector="actionMixerButtonTapped:" destination="Y2L-VS-PGG" eventType="touchUpInside" id="Xc4-wI-FAC"/>
+                                            <action selector="actionSaveButtonTapped:" destination="Vxk-7f-4GV" eventType="touchUpInside" id="hKz-h8-3TJ"/>
                                         </connections>
                                     </button>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="75" id="0Sb-y5-URx"/>
-                                    <constraint firstItem="gBS-oT-dTO" firstAttribute="top" secondItem="oef-fT-sML" secondAttribute="top" constant="21" id="615-HZ-kvo"/>
+                                    <constraint firstItem="gBS-oT-dTO" firstAttribute="top" secondItem="oef-fT-sML" secondAttribute="top" constant="27" id="615-HZ-kvo"/>
+                                    <constraint firstItem="nOd-fs-Z6p" firstAttribute="centerY" secondItem="gBS-oT-dTO" secondAttribute="centerY" id="7GT-7a-eAh"/>
                                     <constraint firstItem="eih-p5-WGo" firstAttribute="leading" secondItem="oef-fT-sML" secondAttribute="leading" id="LOX-Ae-hPG"/>
                                     <constraint firstAttribute="trailing" secondItem="gBS-oT-dTO" secondAttribute="trailing" constant="8" id="Lfl-5z-AFW"/>
                                     <constraint firstAttribute="trailing" secondItem="CGN-d5-3Id" secondAttribute="trailing" constant="8" id="MPm-6u-uyU"/>
                                     <constraint firstItem="CGN-d5-3Id" firstAttribute="top" secondItem="oef-fT-sML" secondAttribute="top" constant="27" id="RR0-gu-0nz"/>
                                     <constraint firstItem="CGN-d5-3Id" firstAttribute="leading" secondItem="oef-fT-sML" secondAttribute="leading" constant="8" id="SDm-oh-Vya"/>
                                     <constraint firstAttribute="bottom" secondItem="eih-p5-WGo" secondAttribute="bottom" id="ZEN-gS-dVh"/>
+                                    <constraint firstItem="gBS-oT-dTO" firstAttribute="leading" secondItem="nOd-fs-Z6p" secondAttribute="trailing" constant="16" id="mHf-EO-JY0"/>
                                     <constraint firstAttribute="trailing" secondItem="eih-p5-WGo" secondAttribute="trailing" id="ols-rG-iaJ"/>
                                 </constraints>
                             </view>
@@ -618,21 +629,39 @@
                                             </label>
                                             <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="pmD-dH-Bhq">
                                                 <rect key="frame" x="318" y="871" width="51" height="31"/>
+                                                <connections>
+                                                    <action selector="actionSwitchTriggered:" destination="Vxk-7f-4GV" eventType="valueChanged" id="nhD-Y5-I5J"/>
+                                                </connections>
                                             </switch>
                                             <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="tgh-NX-MeZ">
                                                 <rect key="frame" x="318" y="910" width="51" height="31"/>
+                                                <connections>
+                                                    <action selector="actionSwitchTriggered:" destination="Vxk-7f-4GV" eventType="valueChanged" id="a2m-QO-9WR"/>
+                                                </connections>
                                             </switch>
                                             <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="Rgo-an-od7">
                                                 <rect key="frame" x="318" y="949" width="51" height="31"/>
+                                                <connections>
+                                                    <action selector="actionSwitchTriggered:" destination="Vxk-7f-4GV" eventType="valueChanged" id="fmb-VM-d1x"/>
+                                                </connections>
                                             </switch>
                                             <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="ch6-UQ-13q">
                                                 <rect key="frame" x="318" y="988" width="51" height="31"/>
+                                                <connections>
+                                                    <action selector="actionSwitchTriggered:" destination="Vxk-7f-4GV" eventType="valueChanged" id="j3S-D2-bR3"/>
+                                                </connections>
                                             </switch>
                                             <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="pev-59-9of">
                                                 <rect key="frame" x="318" y="1027" width="51" height="31"/>
+                                                <connections>
+                                                    <action selector="actionSwitchTriggered:" destination="Vxk-7f-4GV" eventType="valueChanged" id="mQ1-xM-K5X"/>
+                                                </connections>
                                             </switch>
                                             <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="N0r-MS-LUJ">
                                                 <rect key="frame" x="318" y="1066" width="51" height="31"/>
+                                                <connections>
+                                                    <action selector="actionSwitchTriggered:" destination="Vxk-7f-4GV" eventType="valueChanged" id="C8l-Ck-0CH"/>
+                                                </connections>
                                             </switch>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Central Heating" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="znJ-7P-7Wv">
                                                 <rect key="frame" x="8" y="915" width="119.5" height="21"/>
@@ -667,10 +696,16 @@
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6kj-bt-bxX">
                                                 <rect key="frame" x="8" y="1130" width="126" height="152"/>
                                                 <state key="normal" image="mapPin"/>
+                                                <connections>
+                                                    <action selector="actionPinLocationButtonTapped:" destination="Vxk-7f-4GV" eventType="touchUpInside" id="vr0-ES-BD9"/>
+                                                </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0s3-DD-wb6">
                                                 <rect key="frame" x="240" y="1130" width="127" height="152"/>
                                                 <state key="normal" image="CurrentLocation"/>
+                                                <connections>
+                                                    <action selector="actionCurrentLocationButtonTapped:" destination="Vxk-7f-4GV" eventType="touchUpInside" id="hZd-0l-O4h"/>
+                                                </connections>
                                             </button>
                                         </subviews>
                                         <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
@@ -762,7 +797,7 @@
                                         </constraints>
                                     </view>
                                 </subviews>
-                                <color key="backgroundColor" red="0.1772384384" green="0.85165066899999997" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                                 <constraints>
                                     <constraint firstItem="7bY-Sv-0gJ" firstAttribute="centerX" secondItem="YAK-ym-Yde" secondAttribute="centerX" id="Ebi-OQ-9SZ"/>
                                     <constraint firstItem="7bY-Sv-0gJ" firstAttribute="top" secondItem="YAK-ym-Yde" secondAttribute="top" id="ktG-KI-9YV"/>
@@ -784,6 +819,33 @@
                     </view>
                     <tabBarItem key="tabBarItem" title="" image="Plus" id="A7k-Qt-rEV"/>
                     <size key="freeformSize" width="375" height="667"/>
+                    <connections>
+                        <outlet property="addressTextField" destination="7ZZ-GA-Ph1" id="Xj6-yI-DTe"/>
+                        <outlet property="advertisementTypeTextField" destination="94D-DQ-fUd" id="N1w-9e-vhy"/>
+                        <outlet property="airConditionerSwitch" destination="pev-59-9of" id="bV9-Bg-BoQ"/>
+                        <outlet property="availableFromTextField" destination="cBF-hc-zWD" id="cl6-jK-bSv"/>
+                        <outlet property="balconySizeTextField" destination="CWa-aD-Wj4" id="C3b-4S-UDZ"/>
+                        <outlet property="bathroomsTextField" destination="DkS-66-8PD" id="anX-qh-gfj"/>
+                        <outlet property="buildYearTextField" destination="EtA-et-OWR" id="Pe5-AA-Tl5"/>
+                        <outlet property="centralHeatingSwitch" destination="tgh-NX-MeZ" id="yfb-oZ-3pj"/>
+                        <outlet property="cityTextField" destination="J5x-Bf-zpB" id="qDw-EE-0SA"/>
+                        <outlet property="countryTextField" destination="lB9-ch-W5d" id="50F-mc-oLS"/>
+                        <outlet property="descriptionTextView" destination="qNX-sV-nC8" id="osI-Iu-T7J"/>
+                        <outlet property="floorTextField" destination="GP6-v0-7i0" id="hFw-IM-rLO"/>
+                        <outlet property="furnishedSwitch" destination="N0r-MS-LUJ" id="KJd-b6-Ouk"/>
+                        <outlet property="parkingTextField" destination="jQp-2W-haa" id="G6d-Pd-ScY"/>
+                        <outlet property="priceTextField" destination="mvI-HC-PSH" id="eu5-hM-xrp"/>
+                        <outlet property="propertySizeTextField" destination="6Ai-nb-V9g" id="eda-19-8ww"/>
+                        <outlet property="propertyTypeTextField" destination="KOA-rH-3OG" id="2Tu-GM-lBn"/>
+                        <outlet property="referenceCodeTextField" destination="Tsi-KP-M3x" id="Nxx-hc-5yE"/>
+                        <outlet property="roomsTextField" destination="vKh-Fm-EM7" id="JZt-rL-sHV"/>
+                        <outlet property="scrollView" destination="YAK-ym-Yde" id="PMJ-4E-fqk"/>
+                        <outlet property="solarWaterHeatingSwitch" destination="Rgo-an-od7" id="s1O-na-JXB"/>
+                        <outlet property="storeRoomSwitch" destination="ch6-UQ-13q" id="Oex-Tu-SmP"/>
+                        <outlet property="titleDeedSwitch" destination="pmD-dH-Bhq" id="ALr-Tw-gGj"/>
+                        <outlet property="titleTextField" destination="vuq-GO-8cE" id="MTk-E8-KIc"/>
+                        <outlet property="topView" destination="7bY-Sv-0gJ" id="esd-Xb-vdg"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="g1J-AN-474" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -792,6 +854,7 @@
     </scenes>
     <resources>
         <image name="BedFilled" width="25" height="25"/>
+        <image name="Camera" width="25" height="25"/>
         <image name="CurrentLocation" width="127" height="152"/>
         <image name="Mixer" width="37" height="37"/>
         <image name="Parking" width="25" height="25"/>
@@ -803,6 +866,7 @@
         <image name="illustration" width="320" height="321"/>
         <image name="mapPin" width="126" height="152"/>
         <image name="propertyPlaceholder" width="240" height="180"/>
+        <image name="save" width="25" height="25"/>
         <image name="sold" width="40" height="40"/>
         <image name="star" width="25" height="25"/>
         <image name="topAd" width="39" height="39"/>
