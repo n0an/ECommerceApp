@@ -294,7 +294,7 @@
                                                         <constraint firstAttribute="height" constant="40" id="M7Q-Hc-hWW"/>
                                                     </constraints>
                                                 </imageView>
-                                                <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="Tmg-gc-yOX">
+                                                <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" animating="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="Tmg-gc-yOX">
                                                     <rect key="frame" x="160" y="109" width="37" height="37"/>
                                                 </activityIndicatorView>
                                             </subviews>

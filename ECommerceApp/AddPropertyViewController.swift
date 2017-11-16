@@ -37,6 +37,15 @@ class AddPropertyViewController: UIViewController {
     @IBOutlet weak var airConditionerSwitch: UISwitch!
     @IBOutlet weak var furnishedSwitch: UISwitch!
     
+    var titleDeedSwitchValue = false
+    var centralHeatingSwitchValue = false
+    var solarWaterHeatingSwitchValue = false
+    var storeRoomSwitchValue = false
+    var airConditionerSwitchValue = false
+    var furnishedSwitchValue = false
+    
+    var user: FUser?
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -45,10 +54,115 @@ class AddPropertyViewController: UIViewController {
         
     }
     
+    // MARK: - HELPER METHODS
+    
+    func save() {
+        
+        if titleTextField.text != "" &&
+            referenceCodeTextField.text != "" &&
+            advertisementTypeTextField.text != "" &&
+            propertyTypeTextField.text != "" &&
+            priceTextField.text != "" {
+            
+            var newProperty = Property()
+            
+            newProperty.referenceCode = referenceCodeTextField.text!
+            newProperty.ownerId = user!.objectID
+            newProperty.title = titleTextField.text!
+            newProperty.advertisementType = advertisementTypeTextField.text!
+            newProperty.price = Int(priceTextField.text!)!
+            newProperty.properyType = propertyTypeTextField.text!
+            
+            if roomsTextField.text != "" {
+                newProperty.numberOfRooms = Int(roomsTextField.text!)!
+            }
+            
+            if bathroomsTextField.text != "" {
+                newProperty.numberOfBathrooms = Int(bathroomsTextField.text!)!
+            }
+            
+            if buildYearTextField.text != "" {
+                newProperty.buildYear = buildYearTextField.text!
+            }
+            
+            if parkingTextField.text != "" {
+                newProperty.parking = Int(parkingTextField.text!)!
+            }
+            
+            if propertySizeTextField.text != "" {
+                newProperty.size = Double(propertySizeTextField.text!)!
+            }
+            
+            if balconySizeTextField.text != "" {
+                newProperty.balconySize = Double(balconySizeTextField.text!)!
+            }
+            
+            if addressTextField.text != "" {
+                newProperty.address = addressTextField.text!
+            }
+            
+            if cityTextField.text != "" {
+                newProperty.city = cityTextField.text!
+            }
+            
+            if countryTextField.text != "" {
+                newProperty.country = countryTextField.text!
+            }
+            
+            if availableFromTextField.text != "" {
+                newProperty.availableFrom = availableFromTextField.text!
+            }
+            
+            if floorTextField.text != "" {
+                newProperty.floor = Int(floorTextField.text!)!
+            }
+            
+            if descriptionTextView.text != "" && descriptionTextView.text != "Description" {
+                newProperty.propertyDescription = descriptionTextView.text
+            }
+            
+            newProperty.titleDeeds = titleDeedSwitchValue
+            newProperty.centralHeating = centralHeatingSwitchValue
+            newProperty.solarWaterHeating = solarWaterHeatingSwitchValue
+            newProperty.airConditioner = airConditionerSwitchValue
+            newProperty.storeRoom = storeRoomSwitchValue
+            newProperty.isFurnished = furnishedSwitchValue
+            
+            // check for property images
+            
+            newProperty.saveProperty()
+            ProgressHUD.showSuccess("Saved")
+            
+            
+        } else {
+            ProgressHUD.showError("Error: Missing required fields")
+        }
+        
+        
+    }
+    
     
     // MARK: - ACTIONS
     
     @IBAction func actionSwitchTriggered(_ sender: Any) {
+        
+        switch sender as! UISwitch {
+        case titleDeedSwitch:
+            titleDeedSwitchValue = !titleDeedSwitchValue
+        case centralHeatingSwitch:
+            centralHeatingSwitchValue = !centralHeatingSwitchValue
+        case solarWaterHeatingSwitch:
+            solarWaterHeatingSwitchValue = !solarWaterHeatingSwitchValue
+        case storeRoomSwitch:
+            storeRoomSwitchValue = !storeRoomSwitchValue
+        case airConditionerSwitch:
+            airConditionerSwitchValue = !airConditionerSwitchValue
+        case furnishedSwitch:
+            furnishedSwitchValue = !furnishedSwitchValue
+        default:
+            break
+        }
+        
     }
     
     
@@ -68,6 +182,15 @@ class AddPropertyViewController: UIViewController {
     }
     
     @IBAction func actionSaveButtonTapped(_ sender: Any) {
+        user = FUser.currentUser()
+        
+        if !user!.isAgent {
+            // check if user can post
+            save()
+            
+        } else {
+            save()
+        }
         
     }
     
