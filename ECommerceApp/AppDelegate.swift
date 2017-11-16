@@ -19,12 +19,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         
-        let APP_ID = "595DEAA1-3065-B102-FFC0-4C109C343C00"
-        let API_KEY = "26F1248E-7E79-5523-FFAE-1912DE23B200"
+        let BACKENDLESS_APP_ID = "595DEAA1-3065-B102-FFC0-4C109C343C00"
+        let BACKENDLESS_API_KEY = "26F1248E-7E79-5523-FFAE-1912DE23B200"
         
         FirebaseApp.configure()
         
-        backendless!.initApp(APP_ID, apiKey: API_KEY)
+        backendless!.initApp(BACKENDLESS_APP_ID, apiKey: BACKENDLESS_API_KEY)
         
         OneSignal.initWithLaunchOptions(launchOptions, appId: kONESIGNALAPPID, handleNotificationReceived: nil, handleNotificationAction: nil, settings: nil)
         
