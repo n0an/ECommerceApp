@@ -8,6 +8,10 @@
 
 import UIKit
 
+protocol PropertyCollectionViewCellDelegate:class {
+    func didClickStarButton(property: Property)
+}
+
 class PropertyCollectionViewCell: UICollectionViewCell {
     
     @IBOutlet weak var imageView: UIImageView!
@@ -22,9 +26,14 @@ class PropertyCollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var soldImageView: UIImageView!
     @IBOutlet weak var loadingIndicator: UIActivityIndicatorView!
     
+    weak var delegate: PropertyCollectionViewCellDelegate?
     
+    var property: Property!
+
     
     func generateCell(property: Property) {
+        
+        self.property = property
         
         self.titleLabel.text = property.title
         self.roomLabel.text = "\(property.numberOfRooms)"
@@ -33,11 +42,44 @@ class PropertyCollectionViewCell: UICollectionViewCell {
         self.priceLabel.text = "\(property.price)"
         self.priceLabel.sizeToFit()
         
+        // top
+        if property.inTopUntil != nil && property.inTopUntil! > Date() {
+            topAdImageView.isHidden = false
+        } else {
+            topAdImageView.isHidden = true
+        }
+        
+        // sold
+        if property.isSold {
+            soldImageView.isHidden = false
+        } else {
+            soldImageView.isHidden = true
+        }
+        
+        // image
+        if let imageLinks = property.imageLinks, imageLinks != "" {
+            
+        } else {
+            self.imageView.image = UIImage(named: "propertyPlaceholder")
+            self.loadingIndicator.stopAnimating()
+        }
+        
+        if self.likeButton != nil, let currentUser = FUser.currentUser() {
+            if currentUser.favoriteProperties.contains(property.objectId!) {
+                self.likeButton.setImage(UIImage(named: "starFilled"), for: [])
+            } else {
+                self.likeButton.setImage(UIImage(named: "star"), for: [])
+            }
+        }
+        
+        
     }
     
     
     
     @IBAction func actionStarButtonPressed(_ sender: Any) {
+        
+        delegate?.didClickStarButton(property: property)
     }
     
     
