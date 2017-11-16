@@ -50,10 +50,10 @@ class AddPropertyViewController: UIViewController {
     var propertyImages: [UIImage] = []
     
     var yearArray: [Int] = []
-    var datePicker: UIDatePicker!
-    var propertyTypePicker: UIPickerView!
-    var advertisementTypePicker: UIPickerView!
-    var yearPicker: UIPickerView!
+    var datePicker = UIDatePicker()
+    var propertyTypePicker = UIPickerView()
+    var advertisementTypePicker = UIPickerView()
+    var yearPicker = UIPickerView()
     
     var locationManager: CLLocationManager?
     var locationCoordinates: CLLocationCoordinate2D?
@@ -64,11 +64,25 @@ class AddPropertyViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        setupPickes()
+        datePicker.addTarget(self, action: #selector(dateChanged(_:)), for: .valueChanged)
+        
+        setupYearsArray()
+        
         scrollView.contentSize = CGSize(width: self.view.bounds.width, height: topView.frame.height)
         
     }
     
     // MARK: - HELPER METHODS
+    
+    func setupYearsArray() {
+        
+//        for year in 1850...2030 {
+//            yearArray.append(year)
+//        }
+        yearArray = Array(1800...2030)
+        yearArray.reverse()
+    }
     
     func save() {
         
@@ -251,6 +265,18 @@ extension AddPropertyViewController: ImagePickerDelegate {
 // MARK: - UITextFieldDelegate
 extension AddPropertyViewController: UITextFieldDelegate {
     
+    func textFieldDidBeginEditing(_ textField: UITextField) {
+        self.activeField = textField
+    }
+    
+    func textFieldDidEndEditing(_ textField: UITextField) {
+        self.activeField = nil
+    }
+    
+//    override func becomeFirstResponder() -> Bool {
+//        self.activeField = textField
+//        return true
+//    }
 }
 
 // MARK: - UIPickerViewDataSource
@@ -271,6 +297,8 @@ extension AddPropertyViewController: UIPickerViewDataSource, UIPickerViewDelegat
         
         toolbar.setItems([flexibleBarButtonItem, doneButton], animated: true)
         
+        // !!!IMPORTANT!!!
+        // DatePicker and UIPicker for textFields
         buildYearTextField.inputAccessoryView = toolbar
         buildYearTextField.inputView = yearPicker
         
@@ -304,6 +332,57 @@ extension AddPropertyViewController: UIPickerViewDataSource, UIPickerViewDelegat
         default:
             return 0
         }
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
+        
+        switch pickerView {
+        case propertyTypePicker:
+            return propertyTypes[row]
+        case advertisementTypePicker:
+            return advertismentTypes[row]
+        case yearPicker:
+            return "\(yearArray[row])"
+        default:
+            return nil
+        }
+        
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+        
+        var rowValue = row
+        
+        switch pickerView {
+        case propertyTypePicker:
+            if rowValue == 0 {
+                rowValue = 1
+            }
+            propertyTypeTextField.text = propertyTypes[rowValue]
+            
+        case advertisementTypePicker:
+            if rowValue == 0 {
+                rowValue = 1
+            }
+            advertisementTypeTextField.text = advertismentTypes[rowValue]
+            
+        case yearPicker:
+            buildYearTextField.text = "\(yearArray[row])"
+            
+        default:
+            break
+        }
+        
+    }
+    
+    @objc func dateChanged(_ sender: UIDatePicker) {
+        
+        let components = Calendar.current.dateComponents([.year, .month, .day], from: sender.date)
+        
+        if activeField == availableFromTextField {
+            availableFromTextField.text = "\(components.day!)/\(components.month!)/\(components.year!)"
+        }
+        
     }
     
     
