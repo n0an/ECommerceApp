@@ -22,7 +22,7 @@ class MainInfoCell: UITableViewCell {
         
         propertyTitleLabel.text = property.title
         propertyPriceLabel.text = "\(property.price)"
-        propertySizeAndRoomsLabel.text = "\(property.size) - \(property.numberOfRooms)"
+        propertySizeAndRoomsLabel.text = "\(property.size) sqm - \(property.numberOfRooms) bedroom(s)"
         
     }
 

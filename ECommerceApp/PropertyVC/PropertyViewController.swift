@@ -25,10 +25,17 @@ class PropertyViewController: UIViewController {
     
     @IBOutlet weak var tableView: UITableView!
     
-    @IBOutlet weak var imageView: UIImageView!
+    @IBOutlet weak var imageScrollView: UIScrollView!
     
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
+    
+    @IBOutlet weak var callButton: UIButton!
+    
     var property: Property!
+    
+    var imageArray: [UIImage] = []
+    
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -37,6 +44,50 @@ class PropertyViewController: UIViewController {
         
         self.tableView.rowHeight = UITableViewAutomaticDimension
         
+        self.tableView.separatorStyle = .none
+        
+        self.tableView.allowsSelection = false
+        
+        // image
+        if let imageLinks = property.imageLinks, imageLinks != "" {
+            
+            downloadImages(urls: imageLinks, withBlock: { (images) in
+                self.activityIndicator.stopAnimating()
+                
+                self.imageArray = images!
+                
+                self.setSlideShow()
+            })
+            
+            
+        } else {
+//            self.imageView.image = UIImage(named: "propertyPlaceholder")
+            self.imageArray.append(UIImage(named: "propertyPlaceholder")!)
+            self.setSlideShow()
+            self.activityIndicator.stopAnimating()
+        }
+        
+    }
+    
+    func setSlideShow() {
+        
+        for index in 0..<imageArray.count {
+            let imageView = UIImageView()
+            imageView.image = imageArray[index]
+            imageView.contentMode = .scaleAspectFit
+            
+            let xPos = self.view.frame.width * CGFloat(index)
+            imageView.frame = CGRect(x: xPos, y: 0, width: imageScrollView.frame.width, height: imageScrollView.frame.height)
+            imageScrollView.contentSize.width = imageScrollView.frame.width * CGFloat(index + 1)
+            imageScrollView.addSubview(imageView)
+        }
+        
+    }
+    
+    func setupUI() {
+        if FUser.currentUser() != nil {
+            self.callButton.isEnabled = true
+        }
         
         
     }
@@ -47,13 +98,22 @@ class PropertyViewController: UIViewController {
     }
     
     
+    @IBAction func actionCallButtonTapped(_ sender: Any) {
+    }
+    
 
 }
 
 
 extension PropertyViewController: UITableViewDataSource {
     func numberOfSections(in tableView: UITableView) -> Int {
-        return 3
+        
+        if property.propertyDescription != nil || property.address != nil || (property.latitude != 0 && property.longitude != 0) {
+            return 3
+        } else {
+            return 2
+        }
+        
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -61,9 +121,17 @@ extension PropertyViewController: UITableViewDataSource {
         case 0:
             return 2
         case 1:
-            return 11
+            return 12
         case 2:
-            return 3
+            
+            if property.latitude != 0 && property.longitude != 0 {
+                return 3
+            } else {
+                
+                return 2
+            }
+            
+            
         default:
             return 0
         }
@@ -155,10 +223,7 @@ extension PropertyViewController: UITableViewDataSource {
     
     
     
-    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return UITableViewAutomaticDimension
-
-    }
+    
     
 }
 
@@ -166,6 +231,12 @@ extension PropertyViewController: UITableViewDataSource {
 
 
 extension PropertyViewController: UITableViewDelegate {
+    
+
+    
+    
+    
+    
     
     
     

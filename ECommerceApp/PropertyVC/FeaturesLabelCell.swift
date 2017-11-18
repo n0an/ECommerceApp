@@ -10,13 +10,6 @@ import UIKit
 
 class FeaturesLabelCell: UITableViewCell {
 
-    
     @IBOutlet weak var centralLabel: UILabel!
     
-    func configureCell(property: Property) {
-        
-        
-        
-    }
-
 }

@@ -16,6 +16,7 @@ class DetailsCell: UITableViewCell {
     @IBOutlet weak var valueLabel: UILabel!
     
     let featuresKeysArray = [
+        "Property Type:",
         "Balcony size (m2):",
         "Bathrooms",
         "Parking",
@@ -37,27 +38,29 @@ class DetailsCell: UITableViewCell {
         
         switch row {
         case 0:
-            value = "\(property.balconySize)"
+            value = property.properyType!
         case 1:
-            value = "\(property.numberOfBathrooms)"
+            value = "\(property.balconySize)"
         case 2:
-            value = "\(property.parking)"
+            value = "\(property.numberOfBathrooms)"
         case 3:
-            value = "\(property.floor)"
+            value = "\(property.parking)"
         case 4:
-            value = "\(property.availableFrom)"
+            value = "\(property.floor)"
         case 5:
-            value = "\(property.buildYear)"
+            value = property.availableFrom ?? ""
         case 6:
-            value = "\(property.centralHeating)"
+            value = property.buildYear ?? ""
         case 7:
-            value = "\(property.solarWaterHeating)"
+            value = property.centralHeating ? "YES" : "NO"
         case 8:
-            value = "\(property.airConditioner)"
+            value = property.solarWaterHeating ? "YES" : "NO"
         case 9:
-            value = "\(property.storeRoom)"
+            value = property.airConditioner ? "YES" : "NO"
         case 10:
-            value = "\(property.isFurnished)"
+            value = property.storeRoom ? "YES" : "NO"
+        case 11:
+            value = property.isFurnished ? "YES" : "NO"
 
 
         default:

@@ -17,7 +17,7 @@ class DescriptionCell: UITableViewCell {
     
     
     func configureCell(property: Property) {
-        descriptionTextView.text = property.description
+        descriptionTextView.text = property.propertyDescription
         addressLabel.text = property.address
     }
 

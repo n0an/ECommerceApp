@@ -377,7 +377,7 @@
             <objects>
                 <viewController storyboardIdentifier="PropertyViewController" id="eZT-7h-tl5" customClass="PropertyViewController" customModule="ECommerceApp" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="EfV-gX-HF0">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="2000"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="1000"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Sd0-13-CAe">
@@ -403,13 +403,16 @@
                                             <action selector="actionBackButtonTapped:" destination="eZT-7h-tl5" eventType="touchUpInside" id="0SB-0j-rpJ"/>
                                         </connections>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TsN-v3-c42">
+                                    <button opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TsN-v3-c42">
                                         <rect key="frame" x="337" y="22.5" width="30" height="30"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="30" id="0Zz-mk-Iyx"/>
                                             <constraint firstAttribute="height" constant="30" id="WfJ-th-f0j"/>
                                         </constraints>
                                         <state key="normal" image="Contact"/>
+                                        <connections>
+                                            <action selector="actionCallButtonTapped:" destination="eZT-7h-tl5" eventType="touchUpInside" id="iLt-UH-nPt"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -427,17 +430,23 @@
                                     <constraint firstItem="Dmd-w1-FUd" firstAttribute="leading" secondItem="Sd0-13-CAe" secondAttribute="leading" id="rCg-TG-esV"/>
                                 </constraints>
                             </view>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="IKY-MR-Qig">
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="IKY-MR-Qig">
                                 <rect key="frame" x="0.0" y="75" width="375" height="220"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="220" id="tzv-oH-hNe"/>
                                 </constraints>
                             </imageView>
-                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" animating="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="Rp1-Am-Tl2">
-                                <rect key="frame" x="169" y="167" width="37" height="37"/>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" pagingEnabled="YES" translatesAutoresizingMaskIntoConstraints="NO" id="AkI-2Z-7SC">
+                                <rect key="frame" x="0.0" y="75" width="375" height="220"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="220" id="vlf-hQ-son"/>
+                                </constraints>
+                            </scrollView>
+                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" animating="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="Rp1-Am-Tl2">
+                                <rect key="frame" x="178" y="175" width="20" height="20"/>
                             </activityIndicatorView>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="YeJ-LY-nj4">
-                                <rect key="frame" x="0.0" y="295" width="375" height="1705"/>
+                                <rect key="frame" x="0.0" y="295" width="375" height="705"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="MainInfoCell" rowHeight="74" id="ELb-6a-yX0" customClass="MainInfoCell" customModule="ECommerceApp" customModuleProvider="target">
@@ -601,20 +610,23 @@
                                             <outlet property="descriptionTextView" destination="AnQ-yj-caG" id="FXU-te-JVO"/>
                                         </connections>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="MapViewCell" rowHeight="194" id="w9L-CE-U9W" customClass="MapViewCell" customModule="ECommerceApp" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="434" width="375" height="194"/>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="MapViewCell" rowHeight="200" id="w9L-CE-U9W" customClass="MapViewCell" customModule="ECommerceApp" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="434" width="375" height="200"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="w9L-CE-U9W" id="4PX-dK-jcP">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="193.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="199.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="AdA-6e-Tl9">
-                                                    <rect key="frame" x="0.0" y="0.0" width="375" height="193.5"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="375" height="200"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="200" id="J6d-8p-cVM"/>
+                                                    </constraints>
                                                 </mapView>
                                             </subviews>
                                             <constraints>
+                                                <constraint firstAttribute="bottom" secondItem="AdA-6e-Tl9" secondAttribute="bottom" id="1EO-K5-B15"/>
                                                 <constraint firstItem="AdA-6e-Tl9" firstAttribute="top" secondItem="4PX-dK-jcP" secondAttribute="top" id="Bua-QW-6P4"/>
-                                                <constraint firstAttribute="bottom" secondItem="AdA-6e-Tl9" secondAttribute="bottom" id="WDP-kS-wFx"/>
                                                 <constraint firstAttribute="trailing" secondItem="AdA-6e-Tl9" secondAttribute="trailing" id="YNm-1G-8YL"/>
                                                 <constraint firstItem="AdA-6e-Tl9" firstAttribute="leading" secondItem="4PX-dK-jcP" secondAttribute="leading" id="dSl-nW-Bui"/>
                                             </constraints>
@@ -630,13 +642,17 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="IKY-MR-Qig" firstAttribute="trailing" secondItem="Px4-Mp-7gj" secondAttribute="trailing" id="1Zn-K1-LLH"/>
-                            <constraint firstItem="Rp1-Am-Tl2" firstAttribute="centerY" secondItem="IKY-MR-Qig" secondAttribute="centerY" id="6eo-UX-F2l"/>
-                            <constraint firstItem="Rp1-Am-Tl2" firstAttribute="centerX" secondItem="IKY-MR-Qig" secondAttribute="centerX" id="Cy3-7c-YBk"/>
+                            <constraint firstItem="AkI-2Z-7SC" firstAttribute="leading" secondItem="Px4-Mp-7gj" secondAttribute="leading" id="2HZ-o7-bXt"/>
+                            <constraint firstItem="AkI-2Z-7SC" firstAttribute="trailing" secondItem="Px4-Mp-7gj" secondAttribute="trailing" id="44i-6h-uOA"/>
                             <constraint firstItem="Sd0-13-CAe" firstAttribute="leading" secondItem="Px4-Mp-7gj" secondAttribute="leading" id="JQb-Id-MT0"/>
                             <constraint firstItem="YeJ-LY-nj4" firstAttribute="top" secondItem="IKY-MR-Qig" secondAttribute="bottom" id="Lnc-2J-gtQ"/>
                             <constraint firstItem="YeJ-LY-nj4" firstAttribute="trailing" secondItem="Px4-Mp-7gj" secondAttribute="trailing" id="Uxq-Nw-DbR"/>
+                            <constraint firstItem="Rp1-Am-Tl2" firstAttribute="centerX" secondItem="AkI-2Z-7SC" secondAttribute="centerX" id="WOh-Ha-Cnd"/>
+                            <constraint firstItem="AkI-2Z-7SC" firstAttribute="top" secondItem="Sd0-13-CAe" secondAttribute="bottom" id="Wtc-GV-cOH"/>
+                            <constraint firstItem="Rp1-Am-Tl2" firstAttribute="centerY" secondItem="AkI-2Z-7SC" secondAttribute="centerY" id="XZO-K0-VcP"/>
                             <constraint firstItem="IKY-MR-Qig" firstAttribute="leading" secondItem="Px4-Mp-7gj" secondAttribute="leading" id="bPk-Cz-Qj2"/>
                             <constraint firstItem="YeJ-LY-nj4" firstAttribute="bottom" secondItem="Px4-Mp-7gj" secondAttribute="bottom" id="iB2-zK-QFw"/>
+                            <constraint firstItem="YeJ-LY-nj4" firstAttribute="top" secondItem="AkI-2Z-7SC" secondAttribute="bottom" id="lXt-Hr-nkq"/>
                             <constraint firstItem="Sd0-13-CAe" firstAttribute="top" secondItem="EfV-gX-HF0" secondAttribute="top" id="n3a-Vn-PJj"/>
                             <constraint firstItem="Sd0-13-CAe" firstAttribute="trailing" secondItem="Px4-Mp-7gj" secondAttribute="trailing" id="r7D-hF-hsK"/>
                             <constraint firstItem="IKY-MR-Qig" firstAttribute="top" secondItem="Sd0-13-CAe" secondAttribute="bottom" id="swc-Qw-Pge"/>
@@ -644,10 +660,11 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="Px4-Mp-7gj"/>
                     </view>
-                    <size key="freeformSize" width="375" height="2000"/>
+                    <size key="freeformSize" width="375" height="1000"/>
                     <connections>
                         <outlet property="activityIndicator" destination="Rp1-Am-Tl2" id="2Ia-B3-PmI"/>
-                        <outlet property="imageView" destination="IKY-MR-Qig" id="e7u-lK-iuF"/>
+                        <outlet property="callButton" destination="TsN-v3-c42" id="euc-Ye-7JJ"/>
+                        <outlet property="imageScrollView" destination="AkI-2Z-7SC" id="RZh-qC-gLQ"/>
                         <outlet property="tableView" destination="YeJ-LY-nj4" id="jlj-Lx-pm9"/>
                     </connections>
                 </viewController>
