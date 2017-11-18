@@ -15,6 +15,10 @@ class MapViewCell: UITableViewCell {
     @IBOutlet weak var mapView: MKMapView!
     
     
-    
+    func configureCell(property: Property) {
+        
+        
+        
+    }
 
 }

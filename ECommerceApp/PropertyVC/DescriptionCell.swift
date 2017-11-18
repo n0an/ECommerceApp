@@ -16,15 +16,9 @@ class DescriptionCell: UITableViewCell {
     @IBOutlet weak var addressLabel: UILabel!
     
     
-    override func awakeFromNib() {
-        super.awakeFromNib()
-        // Initialization code
-    }
-
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
+    func configureCell(property: Property) {
+        descriptionTextView.text = property.description
+        addressLabel.text = property.address
     }
 
 }

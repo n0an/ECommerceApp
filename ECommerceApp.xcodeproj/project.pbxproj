@@ -123,7 +123,7 @@
 				183EBC1E1FBCC76B00208AEC /* Settings */,
 				183EBC1F1FBCC7CA00208AEC /* Register */,
 				183EBC241FBCCA3700208AEC /* Recent */,
-				183EBC281FBD862200208AEC /* AddPropertyViewController.swift */,
+				183E09071FC0ABCF0035106A /* AddProperty */,
 				18259C711FBA3687007456A3 /* Main.storyboard */,
 				18259C741FBA3687007456A3 /* Assets.xcassets */,
 				18259C761FBA3687007456A3 /* LaunchScreen.storyboard */,
@@ -138,7 +138,6 @@
 		183E09041FBE27B50035106A /* PropertyVC */ = {
 			isa = PBXGroup;
 			children = (
-				183E08F81FBDF9040035106A /* MapViewController.swift */,
 				183E08FE1FBE27610035106A /* MainInfoCell.swift */,
 				183E09001FBE27700035106A /* FeaturesLabelCell.swift */,
 				183E08FA1FBE1FC20035106A /* DetailsCell.swift */,
@@ -147,6 +146,15 @@
 				183E08FC1FBE251B0035106A /* PropertyViewController.swift */,
 			);
 			path = PropertyVC;
+			sourceTree = "<group>";
+		};
+		183E09071FC0ABCF0035106A /* AddProperty */ = {
+			isa = PBXGroup;
+			children = (
+				183EBC281FBD862200208AEC /* AddPropertyViewController.swift */,
+				183E08F81FBDF9040035106A /* MapViewController.swift */,
+			);
+			path = AddProperty;
 			sourceTree = "<group>";
 		};
 		183EBC1E1FBCC76B00208AEC /* Settings */ = {

@@ -25,6 +25,11 @@ class PropertyViewController: UIViewController {
     
     @IBOutlet weak var tableView: UITableView!
     
+    @IBOutlet weak var imageView: UIImageView!
+    
+    @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
+    var property: Property!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.tableView.delegate = self
@@ -32,8 +37,15 @@ class PropertyViewController: UIViewController {
         
         self.tableView.rowHeight = UITableViewAutomaticDimension
         
+        
+        
     }
-
+    
+    
+    @IBAction func actionBackButtonTapped(_ sender: Any) {
+        self.dismiss(animated: true, completion: nil)
+    }
+    
     
 
 }
@@ -49,7 +61,7 @@ extension PropertyViewController: UITableViewDataSource {
         case 0:
             return 2
         case 1:
-            return 5
+            return 11
         case 2:
             return 3
         default:
@@ -79,50 +91,73 @@ extension PropertyViewController: UITableViewDataSource {
     }
     
     func configureSectionFirst(row: Int) -> UITableViewCell {
-        let cell: UITableViewCell!
         
         if row == 0 {
-            cell = tableView.dequeueReusableCell(withIdentifier: Storyboard.cellID.mainInfoCell.rawValue, for: IndexPath(row: row, section: 0)) as! MainInfoCell
+            let cell = tableView.dequeueReusableCell(withIdentifier: Storyboard.cellID.mainInfoCell.rawValue, for: IndexPath(row: row, section: 0)) as! MainInfoCell
             
             // configure main cell
             
+            cell.configureCell(property: property)
+            
+            return cell
+            
         } else {
-            cell = tableView.dequeueReusableCell(withIdentifier: Storyboard.cellID.featuresLabelCell.rawValue, for: IndexPath(row: row, section: 0))  as! FeaturesLabelCell
+            let cell = tableView.dequeueReusableCell(withIdentifier: Storyboard.cellID.featuresLabelCell.rawValue, for: IndexPath(row: row, section: 0))  as! FeaturesLabelCell
             
             // configure label cell
+            cell.centralLabel.text = "Features"
+            
+            return cell
+
         }
         
-        return cell
+
     }
     
     func configureSectionSecond(row: Int) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: Storyboard.cellID.detailsCell.rawValue, for: IndexPath(row: row, section: 0)) as! DetailsCell
         
         // configure details cell
+        cell.configureCell(property: property, row: row)
         
         return cell
     }
     
     func configureSectionThird(row: Int) -> UITableViewCell {
-        let cell: UITableViewCell!
+        
         
         if row == 0 {
-            cell = tableView.dequeueReusableCell(withIdentifier: Storyboard.cellID.featuresLabelCell.rawValue, for: IndexPath(row: row, section: 0))  as! FeaturesLabelCell
+            let cell = tableView.dequeueReusableCell(withIdentifier: Storyboard.cellID.featuresLabelCell.rawValue, for: IndexPath(row: row, section: 0))  as! FeaturesLabelCell
             
             // configure label cell
+            cell.centralLabel.text = "Description"
+            return cell
+
             
         } else if row == 1 {
-            cell = tableView.dequeueReusableCell(withIdentifier: Storyboard.cellID.descriptionCell.rawValue, for: IndexPath(row: row, section: 0))  as! DescriptionCell
+            let cell = tableView.dequeueReusableCell(withIdentifier: Storyboard.cellID.descriptionCell.rawValue, for: IndexPath(row: row, section: 0))  as! DescriptionCell
             
             // configure desctiption cell
+            cell.configureCell(property: property)
+            return cell
+
         } else {
-            cell = tableView.dequeueReusableCell(withIdentifier: Storyboard.cellID.mapViewCell.rawValue, for: IndexPath(row: row, section: 0))  as! MapViewCell
+            let cell = tableView.dequeueReusableCell(withIdentifier: Storyboard.cellID.mapViewCell.rawValue, for: IndexPath(row: row, section: 0))  as! MapViewCell
             
             // configure mapView cell
+            cell.configureCell(property: property)
+            return cell
 
         }
         
-        return cell
+        
+    }
+    
+    
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return UITableViewAutomaticDimension
+
     }
     
 }
@@ -132,4 +167,17 @@ extension PropertyViewController: UITableViewDataSource {
 
 extension PropertyViewController: UITableViewDelegate {
     
+    
+    
 }
+
+
+
+
+
+
+
+
+
+
+

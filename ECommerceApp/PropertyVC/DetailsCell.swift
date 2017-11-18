@@ -29,6 +29,44 @@ class DetailsCell: UITableViewCell {
         "Furnished:"
     ]
     
+    func configureCell(property: Property, row: Int) {
+        
+        keyLabel.text = featuresKeysArray[row]
+        
+        var value = ""
+        
+        switch row {
+        case 0:
+            value = "\(property.balconySize)"
+        case 1:
+            value = "\(property.numberOfBathrooms)"
+        case 2:
+            value = "\(property.parking)"
+        case 3:
+            value = "\(property.floor)"
+        case 4:
+            value = "\(property.availableFrom)"
+        case 5:
+            value = "\(property.buildYear)"
+        case 6:
+            value = "\(property.centralHeating)"
+        case 7:
+            value = "\(property.solarWaterHeating)"
+        case 8:
+            value = "\(property.airConditioner)"
+        case 9:
+            value = "\(property.storeRoom)"
+        case 10:
+            value = "\(property.isFurnished)"
 
+
+        default:
+            break
+        }
+        
+        valueLabel.text = value
+        
+        
+    }
 
 }
