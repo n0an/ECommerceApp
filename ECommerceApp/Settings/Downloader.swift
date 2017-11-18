@@ -123,9 +123,9 @@ func convertImagesToDataArray(images: [UIImage], withBlock block: @escaping (_ d
         
         dataArray.append(imageData)
         
-        block(dataArray)
         
     }
+    block(dataArray)
     
     
 }

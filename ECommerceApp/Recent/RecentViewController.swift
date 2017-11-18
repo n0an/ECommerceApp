@@ -110,6 +110,11 @@ extension RecentViewController: UICollectionViewDataSource, UICollectionViewDele
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         
         // Show selected property
+        let propertyVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "PropertyViewController") as! PropertyViewController
+        
+        propertyVC.property = self.properties[indexPath.row]
+        
+        self.present(propertyVC, animated: true, completion: nil)
         
     }
     
