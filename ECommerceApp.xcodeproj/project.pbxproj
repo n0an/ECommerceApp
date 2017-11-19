@@ -36,6 +36,7 @@
 		183EBC291FBD862200208AEC /* AddPropertyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 183EBC281FBD862200208AEC /* AddPropertyViewController.swift */; };
 		1846FA4F1FC22485001E03D9 /* NotificationsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1846FA4E1FC22485001E03D9 /* NotificationsViewController.swift */; };
 		1846FA511FC224A0001E03D9 /* NotificationCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1846FA501FC224A0001E03D9 /* NotificationCell.swift */; };
+		1849938A1FC2265100B625FC /* FBNotification.swift in Sources */ = {isa = PBXBuildFile; fileRef = 184993891FC2265100B625FC /* FBNotification.swift */; };
 		1858C0D21FBB7C8B00F1398F /* ProgressHUD.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 1858C0CF1FBB7C8B00F1398F /* ProgressHUD.bundle */; };
 		1858C0D31FBB7C8B00F1398F /* ProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 1858C0D11FBB7C8B00F1398F /* ProgressHUD.m */; };
 		18AE45031FC1B709002E6283 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18AE45021FC1B709002E6283 /* ProfileViewController.swift */; };
@@ -78,6 +79,7 @@
 		183EBC281FBD862200208AEC /* AddPropertyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddPropertyViewController.swift; sourceTree = "<group>"; };
 		1846FA4E1FC22485001E03D9 /* NotificationsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationsViewController.swift; sourceTree = "<group>"; };
 		1846FA501FC224A0001E03D9 /* NotificationCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationCell.swift; sourceTree = "<group>"; };
+		184993891FC2265100B625FC /* FBNotification.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FBNotification.swift; sourceTree = "<group>"; };
 		1858C0CF1FBB7C8B00F1398F /* ProgressHUD.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = ProgressHUD.bundle; sourceTree = "<group>"; };
 		1858C0D01FBB7C8B00F1398F /* ProgressHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProgressHUD.h; sourceTree = "<group>"; };
 		1858C0D11FBB7C8B00F1398F /* ProgressHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProgressHUD.m; sourceTree = "<group>"; };
@@ -225,6 +227,7 @@
 			children = (
 				15E9B2981FBB022D00D1141C /* FUser.swift */,
 				183EBC261FBD71AD00208AEC /* Property.swift */,
+				184993891FC2265100B625FC /* FBNotification.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -414,6 +417,7 @@
 			files = (
 				183E08F61FBDB9B90035106A /* Downloader.swift in Sources */,
 				183E09011FBE27700035106A /* FeaturesLabelCell.swift in Sources */,
+				1849938A1FC2265100B625FC /* FBNotification.swift in Sources */,
 				183E09061FBE28050035106A /* DescriptionCell.swift in Sources */,
 				183E08FB1FBE1FC20035106A /* DetailsCell.swift in Sources */,
 				183E08FF1FBE27610035106A /* MainInfoCell.swift in Sources */,
