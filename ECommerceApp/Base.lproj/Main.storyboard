@@ -1383,14 +1383,22 @@
                                     <outlet property="delegate" destination="vro-NW-6Ta" id="l0G-Cy-sZa"/>
                                 </connections>
                             </collectionView>
+                            <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="NO FAVORITE PROPERTIES" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2to-fQ-wOJ">
+                                <rect key="frame" x="62" y="321.5" width="251.5" height="24"/>
+                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="20"/>
+                                <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="OSX-we-9v6" firstAttribute="trailing" secondItem="FWZ-uD-qpw" secondAttribute="trailing" id="3yE-m8-a8y"/>
                             <constraint firstItem="5gm-YB-xpW" firstAttribute="leading" secondItem="FWZ-uD-qpw" secondAttribute="leading" id="8IP-58-Y0r"/>
                             <constraint firstItem="5gm-YB-xpW" firstAttribute="top" secondItem="oaJ-WI-QTh" secondAttribute="top" id="AmR-3U-HX9"/>
+                            <constraint firstItem="2to-fQ-wOJ" firstAttribute="centerX" secondItem="oaJ-WI-QTh" secondAttribute="centerX" id="NFj-2O-GNf"/>
                             <constraint firstItem="OSX-we-9v6" firstAttribute="bottom" secondItem="FWZ-uD-qpw" secondAttribute="bottom" id="X9a-gk-E1i"/>
                             <constraint firstItem="OSX-we-9v6" firstAttribute="leading" secondItem="FWZ-uD-qpw" secondAttribute="leading" id="f9z-fu-rZS"/>
+                            <constraint firstItem="2to-fQ-wOJ" firstAttribute="centerY" secondItem="oaJ-WI-QTh" secondAttribute="centerY" id="n3L-iA-0oQ"/>
                             <constraint firstItem="OSX-we-9v6" firstAttribute="top" secondItem="5gm-YB-xpW" secondAttribute="bottom" id="uTu-ua-w0t"/>
                             <constraint firstItem="5gm-YB-xpW" firstAttribute="trailing" secondItem="FWZ-uD-qpw" secondAttribute="trailing" id="xQE-0k-ZN7"/>
                         </constraints>
@@ -1399,6 +1407,7 @@
                     <tabBarItem key="tabBarItem" systemItem="favorites" id="iOn-kh-egb"/>
                     <connections>
                         <outlet property="collectionView" destination="OSX-we-9v6" id="7jS-eb-AZc"/>
+                        <outlet property="noFavoritesLabel" destination="2to-fQ-wOJ" id="4I5-9l-r48"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="pUa-dK-f0l" userLabel="First Responder" sceneMemberID="firstResponder"/>

@@ -120,14 +120,14 @@
 			children = (
 				15E9B29C1FBB251600D1141C /* ECommerceApp.entitlements */,
 				18259C6D1FBA3687007456A3 /* AppDelegate.swift */,
-				183E09041FBE27B50035106A /* PropertyVC */,
-				183EBC251FBD719C00208AEC /* Model */,
-				183EBC1E1FBCC76B00208AEC /* Settings */,
 				183EBC1F1FBCC7CA00208AEC /* Register */,
 				183EBC241FBCCA3700208AEC /* Recent */,
 				183E09071FC0ABCF0035106A /* AddProperty */,
+				183E090A1FC183780035106A /* FavoriteProperties */,
+				183E09041FBE27B50035106A /* PropertyVC */,
+				183EBC251FBD719C00208AEC /* Model */,
+				183EBC1E1FBCC76B00208AEC /* Settings */,
 				18259C711FBA3687007456A3 /* Main.storyboard */,
-				183E09081FC1772F0035106A /* FavoriteViewController.swift */,
 				18259C741FBA3687007456A3 /* Assets.xcassets */,
 				18259C761FBA3687007456A3 /* LaunchScreen.storyboard */,
 				18259C791FBA3687007456A3 /* Info.plist */,
@@ -158,6 +158,14 @@
 				183E08F81FBDF9040035106A /* MapViewController.swift */,
 			);
 			path = AddProperty;
+			sourceTree = "<group>";
+		};
+		183E090A1FC183780035106A /* FavoriteProperties */ = {
+			isa = PBXGroup;
+			children = (
+				183E09081FC1772F0035106A /* FavoriteViewController.swift */,
+			);
+			path = FavoriteProperties;
 			sourceTree = "<group>";
 		};
 		183EBC1E1FBCC76B00208AEC /* Settings */ = {
