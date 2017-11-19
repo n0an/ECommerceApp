@@ -10,7 +10,11 @@ import UIKit
 import ImagePicker
 
 class AddPropertyViewController: UIViewController {
-
+    
+    @IBOutlet weak var vcTitleLabel: UILabel!
+    
+    @IBOutlet weak var cameraButton: UIButton!
+    
     @IBOutlet weak var scrollView: UIScrollView!
     @IBOutlet weak var topView: UIView!
     @IBOutlet weak var referenceCodeTextField: UITextField!
@@ -38,12 +42,16 @@ class AddPropertyViewController: UIViewController {
     @IBOutlet weak var airConditionerSwitch: UISwitch!
     @IBOutlet weak var furnishedSwitch: UISwitch!
     
+    @IBOutlet weak var backButton: UIButton!
+    
     var titleDeedSwitchValue = false
     var centralHeatingSwitchValue = false
     var solarWaterHeatingSwitchValue = false
     var storeRoomSwitchValue = false
     var airConditionerSwitchValue = false
     var furnishedSwitchValue = false
+    
+    var property: Property?
     
     var user: FUser?
     
@@ -64,17 +72,31 @@ class AddPropertyViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        setupPickes()
+        setupPickers()
         datePicker.addTarget(self, action: #selector(dateChanged(_:)), for: .valueChanged)
         
         setupYearsArray()
         
         scrollView.contentSize = CGSize(width: self.view.bounds.width, height: topView.frame.height)
         
+        if property != nil {
+            // edit
+            
+            setUIForEdit()
+            
+        }
+        
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        
+        guard isUserLoggedIn(viewController: self) else {
+            return
+        }
+        
+        
+        
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -83,6 +105,61 @@ class AddPropertyViewController: UIViewController {
     }
     
     // MARK: - HELPER METHODS
+    
+    func setUIForEdit() {
+        
+        self.vcTitleLabel.text = "Edit Property"
+        
+        self.cameraButton.setImage(UIImage(named: "Picture")!, for: [])
+        
+        self.backButton.isHidden = false
+        
+        // required
+        referenceCodeTextField.text = property!.referenceCode
+        titleTextField.text = property!.title
+        advertisementTypeTextField.text = property!.advertisementType
+        priceTextField.text = "\(property!.price)"
+        propertyTypeTextField.text = property!.properyType
+        
+        // optional
+        balconySizeTextField.text = "\(property!.balconySize)"
+        bathroomsTextField.text = "\(property!.numberOfBathrooms)"
+        buildYearTextField.text = property!.buildYear
+        parkingTextField.text = "\(property!.parking)"
+        roomsTextField.text = "\(property!.numberOfRooms)"
+        propertySizeTextField.text = "\(property!.size)"
+        addressTextField.text = property!.address
+        availableFromTextField.text = property!.availableFrom
+        floorTextField.text = "\(property!.floor)"
+        descriptionTextView.text = property!.propertyDescription
+        cityTextField.text = property!.city
+        countryTextField.text = property!.country
+        
+        titleDeedSwitchValue = property!.titleDeeds
+        centralHeatingSwitchValue = property!.centralHeating
+        solarWaterHeatingSwitchValue = property!.solarWaterHeating
+        storeRoomSwitchValue = property!.storeRoom
+        airConditionerSwitchValue = property!.airConditioner
+        furnishedSwitchValue = property!.isFurnished
+        
+        if property!.latitude != 0.0 && property!.longitude != 0.0 {
+            locationCoordinates = CLLocationCoordinate2DMake(property!.latitude, property!.longitude)
+        }
+        
+        updateSwitches()
+
+
+    }
+    
+    func updateSwitches() {
+        titleDeedSwitch.isOn = titleDeedSwitchValue
+        centralHeatingSwitch.isOn = centralHeatingSwitchValue
+        solarWaterHeatingSwitch.isOn = solarWaterHeatingSwitchValue
+        storeRoomSwitch.isOn = storeRoomSwitchValue
+        airConditionerSwitch.isOn = airConditionerSwitchValue
+        furnishedSwitch.isOn = furnishedSwitchValue
+
+    }
     
     func setupYearsArray() {
    
@@ -260,6 +337,12 @@ class AddPropertyViewController: UIViewController {
         }
     }
     
+    
+    @IBAction func actionBackButtonTapped(_ sender: Any) {
+        self.dismiss(animated: true, completion: nil)
+    }
+    
+    
 }
 
 // MARK: - ImagePickerDelegate
@@ -300,7 +383,7 @@ extension AddPropertyViewController: UITextFieldDelegate {
 // MARK: - UIPickerViewDataSource
 extension AddPropertyViewController: UIPickerViewDataSource, UIPickerViewDelegate {
     
-    func setupPickes() {
+    func setupPickers() {
         yearPicker.delegate = self
         propertyTypePicker.delegate = self
         advertisementTypePicker.delegate = self

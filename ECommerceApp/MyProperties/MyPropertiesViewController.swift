@@ -122,7 +122,12 @@ extension MyPropertiesViewController: PropertyCollectionViewCellDelegate {
         
         let actionEdit = UIAlertAction(title: "Edit Property", style: .default) { (action) in
             
+            let addPropertyVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "AddPropertyViewController") as! AddPropertyViewController
             
+            addPropertyVC.property = property
+            
+            
+            self.present(addPropertyVC, animated: true, completion: nil)
             
         }
         

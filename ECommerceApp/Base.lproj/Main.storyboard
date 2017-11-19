@@ -732,7 +732,7 @@
         <!--Add Property View Controller-->
         <scene sceneID="M0o-Fw-m6r">
             <objects>
-                <viewController id="Vxk-7f-4GV" customClass="AddPropertyViewController" customModule="ECommerceApp" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="AddPropertyViewController" id="Vxk-7f-4GV" customClass="AddPropertyViewController" customModule="ECommerceApp" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="psH-Aw-QSw">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -747,6 +747,13 @@
                                             <constraint firstAttribute="height" constant="2" id="C3R-pY-htB"/>
                                         </constraints>
                                     </view>
+                                    <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kFp-6f-04p">
+                                        <rect key="frame" x="8" y="27" width="25" height="25"/>
+                                        <state key="normal" image="Back"/>
+                                        <connections>
+                                            <action selector="actionBackButtonTapped:" destination="Vxk-7f-4GV" eventType="touchUpInside" id="6nM-Lq-L6W"/>
+                                        </connections>
+                                    </button>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Add Property" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CGN-d5-3Id">
                                         <rect key="frame" x="8" y="27" width="359" height="25.5"/>
                                         <fontDescription key="fontDescription" type="boldSystem" pointSize="21"/>
@@ -780,7 +787,9 @@
                                     <constraint firstAttribute="trailing" secondItem="CGN-d5-3Id" secondAttribute="trailing" constant="8" id="MPm-6u-uyU"/>
                                     <constraint firstItem="CGN-d5-3Id" firstAttribute="top" secondItem="oef-fT-sML" secondAttribute="top" constant="27" id="RR0-gu-0nz"/>
                                     <constraint firstItem="CGN-d5-3Id" firstAttribute="leading" secondItem="oef-fT-sML" secondAttribute="leading" constant="8" id="SDm-oh-Vya"/>
+                                    <constraint firstItem="kFp-6f-04p" firstAttribute="leading" secondItem="oef-fT-sML" secondAttribute="leading" constant="8" id="XMF-nD-RuD"/>
                                     <constraint firstAttribute="bottom" secondItem="eih-p5-WGo" secondAttribute="bottom" id="ZEN-gS-dVh"/>
+                                    <constraint firstItem="kFp-6f-04p" firstAttribute="centerY" secondItem="nOd-fs-Z6p" secondAttribute="centerY" id="gOq-wM-CI4"/>
                                     <constraint firstItem="gBS-oT-dTO" firstAttribute="leading" secondItem="nOd-fs-Z6p" secondAttribute="trailing" constant="16" id="mHf-EO-JY0"/>
                                     <constraint firstAttribute="trailing" secondItem="eih-p5-WGo" secondAttribute="trailing" id="ols-rG-iaJ"/>
                                 </constraints>
@@ -1174,9 +1183,11 @@
                         <outlet property="advertisementTypeTextField" destination="94D-DQ-fUd" id="N1w-9e-vhy"/>
                         <outlet property="airConditionerSwitch" destination="pev-59-9of" id="bV9-Bg-BoQ"/>
                         <outlet property="availableFromTextField" destination="cBF-hc-zWD" id="cl6-jK-bSv"/>
+                        <outlet property="backButton" destination="kFp-6f-04p" id="ZOy-M6-3BG"/>
                         <outlet property="balconySizeTextField" destination="CWa-aD-Wj4" id="C3b-4S-UDZ"/>
                         <outlet property="bathroomsTextField" destination="DkS-66-8PD" id="anX-qh-gfj"/>
                         <outlet property="buildYearTextField" destination="EtA-et-OWR" id="Pe5-AA-Tl5"/>
+                        <outlet property="cameraButton" destination="gBS-oT-dTO" id="ocF-ie-l7I"/>
                         <outlet property="centralHeatingSwitch" destination="tgh-NX-MeZ" id="yfb-oZ-3pj"/>
                         <outlet property="cityTextField" destination="J5x-Bf-zpB" id="qDw-EE-0SA"/>
                         <outlet property="countryTextField" destination="lB9-ch-W5d" id="50F-mc-oLS"/>
@@ -1195,6 +1206,7 @@
                         <outlet property="titleDeedSwitch" destination="pmD-dH-Bhq" id="ALr-Tw-gGj"/>
                         <outlet property="titleTextField" destination="vuq-GO-8cE" id="MTk-E8-KIc"/>
                         <outlet property="topView" destination="7bY-Sv-0gJ" id="esd-Xb-vdg"/>
+                        <outlet property="vcTitleLabel" destination="CGN-d5-3Id" id="6l0-tR-kfP"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="g1J-AN-474" userLabel="First Responder" sceneMemberID="firstResponder"/>
