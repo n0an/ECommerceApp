@@ -173,7 +173,7 @@ class FUser {
                 block(error)
             } else {
                 
-                fetchUserWith(userId: firUser!.uid, completion: { (fUser) in
+                fetchUserWith(userId: (firUser?.uid)!, completion: { (fUser) in
                     
                     saveUserLocally(fUser: fUser!)
                     
@@ -225,7 +225,17 @@ func fetchUserWith(userId: String, completion: @escaping (_ user: FUser?) -> Voi
     firebase.child(kUSER).queryOrdered(byChild: kOBJECTID).queryEqual(toValue: userId).observeSingleEvent(of: .value) { (snapshot) in
         
         if snapshot.exists() {
-            guard let userDict = snapshot.value as? [String: Any] else { return }
+            
+            let childSnap = snapshot.childSnapshot(forPath: userId)
+            guard let userDict = childSnap.value as? [String: Any] else { return }
+            
+            
+//            guard let userDict = snapshot.value as? [String: Any] else { return }
+//
+//            let userDictValues = userDict.values
+//
+//            let first = userDictValues.first as! [String: Any]
+            
             
             let user = FUser(dict: userDict)
             
