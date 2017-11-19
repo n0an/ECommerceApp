@@ -57,13 +57,7 @@ class MyPropertiesViewController: UIViewController {
                 self.collectionView.reloadData()
             }
         })
-        
-        
-        
-        
     }
-   
-
 }
 
 
@@ -113,9 +107,78 @@ extension MyPropertiesViewController: PropertyCollectionViewCellDelegate {
     
     func didClickMenuButton(property: Property) {
         
+        let soldStatus = property.isSold ? "Mark Available" : "Mark Sold"
+        
+        var topStatus = "Promote"
+        
+        var isInTop = false
+        
+        if property.inTopUntil != nil && property.inTopUntil! > Date() {
+            isInTop = true
+            topStatus = "Already in top"
+        }
+        
+        let optionMenu = UIAlertController(title: "Property Menu", message: nil, preferredStyle: .actionSheet)
+        
+        let actionEdit = UIAlertAction(title: "Edit Property", style: .default) { (action) in
+            
+            
+            
+        }
+        
+        let actionMakeTop = UIAlertAction(title: topStatus, style: .default) { (action) in
+            
+            
+            
+        }
+        
+        let actionSold = UIAlertAction(title: soldStatus, style: .default) { (action) in
+            
+            property.isSold = !property.isSold
+            
+            property.saveProperty(completion: { (message) in
+                self.loadProperties()
+            })
+            
+        }
+        
+        let actionDelete = UIAlertAction(title: "Delete", style: .destructive) { (action) in
+            
+            ProgressHUD.show("Deleting...")
+            property.deleteProperty(property: property, completion: { (message) in
+                
+                print(message)
+                ProgressHUD.showSuccess("Deleted!")
+                self.loadProperties()
+            })
+            
+        }
+        
+        let actionCancel = UIAlertAction(title: "Cancel", style: .cancel)
+        
+        
+        optionMenu.addAction(actionEdit)
+        optionMenu.addAction(actionMakeTop)
+        optionMenu.addAction(actionSold)
+        optionMenu.addAction(actionDelete)
+        optionMenu.addAction(actionCancel)
+
+        
+        
+        self.present(optionMenu, animated: true)
+        
     }
     
     
 }
+
+
+
+
+
+
+
+
+
 
 
