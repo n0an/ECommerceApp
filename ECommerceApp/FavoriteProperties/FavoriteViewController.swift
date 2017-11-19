@@ -1,31 +1,34 @@
 //
-//  RecentViewController.swift
+//  FavoriteViewController.swift
 //  ECommerceApp
 //
-//  Created by Anton Novoselov on 15/11/2017.
+//  Created by Anton Novoselov on 19/11/2017.
 //  Copyright © 2017 Anton Novoselov. All rights reserved.
 //
 
 import UIKit
 
-class RecentViewController: UIViewController {
-    
+class FavoriteViewController: UIViewController {
+
     @IBOutlet weak var collectionView: UICollectionView!
     
+    @IBOutlet weak var noFavoritesLabel: UILabel!
     var properties: [Property] = []
-    
-    var numberOfPropertiestextField: UITextField!
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        
         
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        loadProperties(limitNumber: kRECENTPROPERTYLIMIT)
-
+        if isUserLoggedIn(viewController: self) {
+            
+            loadProperties()
+        }
         
     }
     
@@ -34,69 +37,58 @@ class RecentViewController: UIViewController {
     }
     
     // MARK: - HELPER METHODS
-    func loadProperties(limitNumber: Int) {
-        Property.fetchRecentProperties(limitNumber: limitNumber) { (properties) in
+    func loadProperties() {
+        
+        self.properties = []
+        
+        let currentUser = FUser.currentUser()!
+        
+        let favPropsArray = currentUser.favoriteProperties
+        
+        if favPropsArray.count > 0 {
             
-            guard let properties = properties else { return }
-            guard !properties.isEmpty else { return }
+            let stringClause = "'" + favPropsArray.joined(separator: "', '") + "'"
             
-            self.properties = properties
+            print("stringClause = " + stringClause)
+            
+            let whereClause = "objectId IN (\(stringClause))"
+            
+            print("whereClause = " + whereClause)
+
+            
+            Property.fetchPropertiesWith(whereClause: whereClause, completion: { (allProperties) in
+                if let allProperties = allProperties, !allProperties.isEmpty {
+                    self.properties = allProperties
+                    
+                    self.noFavoritesLabel.isHidden = true
+                    self.collectionView.reloadData()
+                }
+            })
+            
+        } else {
             
             self.collectionView.reloadData()
-            ProgressHUD.dismiss()
-        }
-    }
-    
-    
-    
-    
-    // MARK: - ACTIONS
-    
-    @IBAction func actionMixerButtonTapped(_ sender: Any) {
-        
-        let alertController = UIAlertController(title: "Update", message: "Set the number of properties to display", preferredStyle: .alert)
-        
-        alertController.addTextField { (numberOfPropertiesTextField) in
-            numberOfPropertiesTextField.placeholder = "Number of Properties"
-            numberOfPropertiesTextField.borderStyle = .roundedRect
-            numberOfPropertiesTextField.keyboardType = .numberPad
-            
-            self.numberOfPropertiestextField = numberOfPropertiesTextField
+            self.noFavoritesLabel.isHidden = false
         }
         
-        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel)
         
-        let updateAction = UIAlertAction(title: "Update", style: .default) { (action) in
-            
-            if self.numberOfPropertiestextField.text != "" && self.numberOfPropertiestextField.text != "0" {
-                ProgressHUD.show("Updating...")
-                self.loadProperties(limitNumber: Int(self.numberOfPropertiestextField.text!)!)
-            }
-            
-        }
-        
-        alertController.addAction(cancelAction)
-        alertController.addAction(updateAction)
-        
-        self.present(alertController, animated: true)
         
     }
+
     
 }
 
-
-extension RecentViewController: UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout {
-    // MARK: - UICollectionViewDataSource
+extension FavoriteViewController: UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return properties.count
-        
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "PropertyCell", for: indexPath) as! PropertyCollectionViewCell
         
         let property = properties[indexPath.row]
+        
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "PropertyCell", for: indexPath) as! PropertyCollectionViewCell
         
         cell.generateCell(property: property)
         
@@ -126,8 +118,8 @@ extension RecentViewController: UICollectionViewDataSource, UICollectionViewDele
     
 }
 
-extension RecentViewController: PropertyCollectionViewCellDelegate {
-    
+
+extension FavoriteViewController: PropertyCollectionViewCellDelegate {
     func didClickStarButton(property: Property) {
         print("didClickStarButton")
         
@@ -145,21 +137,10 @@ extension RecentViewController: PropertyCollectionViewCellDelegate {
                     if !success {
                         print("Error removing favorite")
                     } else {
-                        self.collectionView.reloadData()
+                        
+                        self.loadProperties()
+                        
                         ProgressHUD.showSuccess("Removed from the favorite list")
-                    }
-                })
-                
-            } else {
-                // add to favorite list
-                currentUser.favoriteProperties.append(property.objectId!)
-                
-                updateCurrentUser(withValues: [kFAVORIT: currentUser.favoriteProperties], withBlock: { (success) in
-                    if !success {
-                        print("Error adding favorite")
-                    } else {
-                        self.collectionView.reloadData()
-                        ProgressHUD.showSuccess("Added to the favorite list")
                     }
                 })
                 
@@ -167,18 +148,12 @@ extension RecentViewController: PropertyCollectionViewCellDelegate {
             
         } else {
             // show login/register screen
+            let vc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "RegisterViewController") as! RegisterViewController
+            
+            self.present(vc, animated: true, completion: nil)
         }
         
     }
 }
-
-
-
-
-
-
-
-
-
 
 

@@ -259,6 +259,20 @@ func updateCurrentUser(withValues values: [String: Any], withBlock: @escaping (_
     
 }
 
+func isUserLoggedIn(viewController: UIViewController) -> Bool {
+    
+    if FUser.currentUser() != nil {
+        return true
+    } else {
+        
+        let vc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "RegisterViewController") as! RegisterViewController
+        
+        viewController.present(vc, animated: true, completion: nil)
+        return false
+    }
+    
+}
+
 // MARK: OneSignal
 
 func updateOneSignalId() {
