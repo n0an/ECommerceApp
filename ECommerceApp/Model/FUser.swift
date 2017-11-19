@@ -192,17 +192,23 @@ class FUser {
     
     class func logoutCurrentUser(withBlock block: @escaping (_ success: Bool) -> Void) {
         UserDefaults.standard.removeObject(forKey: "OneSignalId")
-        removeOneSignalId()
-        UserDefaults.standard.removeObject(forKey: kCURRENTUSER)
-        UserDefaults.standard.synchronize()
-        
-        do {
-            try Auth.auth().signOut()
-            block(true)
-        } catch let error {
-            print(error.localizedDescription)
-            block(false)
+        removeOneSignalId { (success) in
+            if success {
+                UserDefaults.standard.removeObject(forKey: kCURRENTUSER)
+                UserDefaults.standard.synchronize()
+                
+                do {
+                    try Auth.auth().signOut()
+                    block(true)
+                } catch let error {
+                    print(error.localizedDescription)
+                    block(false)
+                }
+            }
         }
+        
+        
+        
     }
     
     
@@ -336,7 +342,9 @@ func updateOneSignalId() {
             
         } else {
             
-            removeOneSignalId()
+            removeOneSignalId(completion: { (success) in
+                print(success)
+            })
             
         }
         
@@ -346,19 +354,28 @@ func updateOneSignalId() {
 
 
 func setOneSignalId(pushId: String) {
-    updateCurrentUserOneSignalId(newId: pushId)
+    updateCurrentUserOneSignalId(newId: pushId) { (success) in
+        
+    }
     
 }
 
-func removeOneSignalId() {
-    updateCurrentUserOneSignalId(newId: "")
+func removeOneSignalId(completion: @escaping (Bool)->Void) {
+    updateCurrentUserOneSignalId(newId: "") { (success) in
+        completion(success)
+    }
 
 }
 
-func updateCurrentUserOneSignalId(newId: String) {
+func updateCurrentUserOneSignalId(newId: String, withBlock block: @escaping (_ success: Bool) -> Void) {
     updateCurrentUser(withValues: [kPUSHID: newId, kUPDATEDAT: dateFormatter().string(from: Date())]) { (success) in
         
-        print("One signal Id was updated - \(success)")
+        
+        if success {
+            print("One signal Id was updated - \(success)")
+
+            block(success)
+        }
         
     }
 }
