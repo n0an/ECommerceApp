@@ -192,6 +192,8 @@ class AddPropertyViewController: UIViewController {
             
             ProgressHUD.show("Saving...")
             
+            user = FUser.currentUser()
+            
             newProperty.referenceCode = referenceCodeTextField.text!
             newProperty.ownerId = user!.objectID
             newProperty.title = titleTextField.text!
@@ -335,6 +337,8 @@ class AddPropertyViewController: UIViewController {
             let vc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "ImageGalleryViewController") as! ImageGalleryViewController
             
             vc.property = property!
+            
+            vc.delegate = self
             
             self.present(vc, animated: true, completion: nil)
             return
@@ -579,6 +583,8 @@ extension AddPropertyViewController: MapViewControllerDelegate {
 
 extension AddPropertyViewController: ImageGalleryViewControllerDelegate {
     func didFinishEditingImages(allImages: [UIImage]) {
+        self.propertyImages = allImages
+        save()
         
     }
     
