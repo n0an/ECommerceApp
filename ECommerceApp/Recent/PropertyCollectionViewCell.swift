@@ -18,6 +18,11 @@ class PropertyCollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var imageView: UIImageView!
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var likeButton: UIButton!
+    
+    
+    @IBOutlet weak var menuButton: UIButton!
+    
+    
     @IBOutlet weak var roomLabel: UILabel!
     @IBOutlet weak var bathroomLabel: UILabel!
     @IBOutlet weak var parkingLabel: UILabel!
@@ -26,6 +31,9 @@ class PropertyCollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var topAdImageView: UIImageView!
     @IBOutlet weak var soldImageView: UIImageView!
     @IBOutlet weak var loadingIndicator: UIActivityIndicatorView!
+    
+    
+    
     
     weak var delegate: PropertyCollectionViewCellDelegate?
     
@@ -88,6 +96,11 @@ class PropertyCollectionViewCell: UICollectionViewCell {
     @IBAction func actionStarButtonPressed(_ sender: Any) {
         
         delegate?.didClickStarButton!(property: property)
+    }
+    
+    
+    @IBAction func actionMenuButtonTapped(_ sender: Any) {
+        delegate?.didClickMenuButton!(property: property)
     }
     
     

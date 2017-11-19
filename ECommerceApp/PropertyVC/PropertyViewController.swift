@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import IDMPhotoBrowser
 
 class PropertyViewController: UIViewController {
     
@@ -35,7 +36,7 @@ class PropertyViewController: UIViewController {
     
     var imageArray: [UIImage] = []
     
-    
+    var tapGesture: UITapGestureRecognizer!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -47,6 +48,10 @@ class PropertyViewController: UIViewController {
         self.tableView.separatorStyle = .none
         
         self.tableView.allowsSelection = false
+        
+        tapGesture = UITapGestureRecognizer(target: self, action: #selector(self.imageTapped))
+        
+        imageScrollView.addGestureRecognizer(tapGesture)
         
         // image
         if let imageLinks = property.imageLinks, imageLinks != "" {
@@ -61,11 +66,23 @@ class PropertyViewController: UIViewController {
             
             
         } else {
-//            self.imageView.image = UIImage(named: "propertyPlaceholder")
+
             self.imageArray.append(UIImage(named: "propertyPlaceholder")!)
             self.setSlideShow()
             self.activityIndicator.stopAnimating()
         }
+        
+    }
+    
+    @objc func imageTapped() {
+        
+        let photos = IDMPhoto.photos(withImages: imageArray)
+        
+        let browser = IDMPhotoBrowser(photos: photos)
+        
+        browser?.setInitialPageIndex(0)
+        
+        self.present(browser!, animated: true, completion: nil)
         
     }
     
