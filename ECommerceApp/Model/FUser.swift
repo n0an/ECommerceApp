@@ -163,6 +163,47 @@ class FUser {
         
     }
     
+    // MARK: - Login
+    
+    class func loginUserWith(email: String, password: String, withBlock block: @escaping (_ error: Error?)->Void) {
+        
+        Auth.auth().signIn(withEmail: email, password: password) { (firUser, error) in
+            
+            if let error = error {
+                block(error)
+            } else {
+                
+                fetchUserWith(userId: firUser!.uid, completion: { (fUser) in
+                    
+                    saveUserLocally(fUser: fUser!)
+                    
+                    block(nil)
+                })
+                
+                
+            }
+            
+        }
+        
+    }
+    
+    
+    // MARK: - LogOut
+    
+    class func logoutCurrentUser(withBlock block: @escaping (_ success: Bool) -> Void) {
+        UserDefaults.standard.removeObject(forKey: "OneSignalId")
+        removeOneSignalId()
+        UserDefaults.standard.removeObject(forKey: kCURRENTUSER)
+        UserDefaults.standard.synchronize()
+        
+        do {
+            try Auth.auth().signOut()
+            block(true)
+        } catch let error {
+            print(error.localizedDescription)
+            block(false)
+        }
+    }
     
     
 }
