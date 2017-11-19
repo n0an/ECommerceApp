@@ -163,6 +163,30 @@ class FUser {
         
     }
     
+    // MARK: - Login
+    
+    class func loginUserWith(email: String, password: String, withBlock block: @escaping (_ error: Error?)->Void) {
+        
+        Auth.auth().signIn(withEmail: email, password: password) { (firUser, error) in
+            
+            if let error = error {
+                block(error)
+            } else {
+                
+                fetchUserWith(userId: firUser!.uid, completion: { (fUser) in
+                    
+                    saveUserLocally(fUser: fUser!)
+                    
+                    block(nil)
+                })
+                
+                
+            }
+            
+        }
+        
+    }
+    
     
     // MARK: - LogOut
     

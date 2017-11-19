@@ -101,18 +101,36 @@ class RegisterViewController: UIViewController {
                 let firstName = nameTextField.text,
                 let lastName = lastNameTextField.text else { return }
         
-        guard email != "" && password != "" && firstName != "" && lastName != "" else { return }
-        
-        FUser.registerUserWith(email: email, password: password, firstName: firstName, lastName: lastName) { (error) in
+        if email != "" && password != "" && firstName != "" && lastName != "" {
             
-            guard error == nil else {
-                print("Error registering user with email \(error!.localizedDescription)")
-                return
+            FUser.registerUserWith(email: email, password: password, firstName: firstName, lastName: lastName) { (error) in
+                
+                guard error == nil else {
+                    print("Error registering user with email \(error!.localizedDescription)")
+                    return
+                }
+                
+                self.goToApp()
+                
             }
             
-            self.goToApp()
+        } else if email != "" && password != "" {
+            
+            FUser.loginUserWith(email: email, password: password, withBlock: { (error) in
+                
+                guard error == nil else {
+                    print("Error login user with email \(error!.localizedDescription)")
+                    return
+                }
+                
+                self.goToApp()
 
+                
+            })
+            
         }
+        
+        
         
         
     }
