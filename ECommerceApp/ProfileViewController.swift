@@ -8,6 +8,7 @@
 
 import UIKit
 import ImagePicker
+import Firebase
 
 class ProfileViewController: UIViewController {
     
@@ -28,6 +29,50 @@ class ProfileViewController: UIViewController {
         avatarImageView.layer.cornerRadius = self.avatarImageView.frame.width / 2
         avatarImageView.layer.masksToBounds = true
 
+    }
+    
+    func saveChanges() {
+        
+        guard nameTextField.text! != "" && lastNameTextField.text != "" else {
+            ProgressHUD.showError("Name and Last name can not be empty")
+            return
+        }
+        
+        var addPhone = ""
+        
+        if additionalNumberTextField.text != "" {
+            addPhone = additionalNumberTextField.text!
+        }
+        
+        ProgressHUD.show("Saving...")
+        
+        var values = [kFIRSTNAME: nameTextField.text!,
+                      kLASTNAME: lastNameTextField.text!,
+                      kADDPHONE: addPhone]
+        
+        if avatarImage != nil {
+            
+            // !!!IMPORTANT!!!
+            // Encode image to string
+            
+            let image = UIImageJPEGRepresentation(avatarImage!, 0.5)
+            
+            let avatarString = image!.base64EncodedString(options: NSData.Base64EncodingOptions(rawValue: 0))
+            
+            values.updateValue(avatarString, forKey: kAVATAR)
+        }
+        
+        updateCurrentUser(withValues: values) { (success) in
+            
+            if !success {
+                ProgressHUD.showError("Couldn't update user")
+            } else {
+                ProgressHUD.showSuccess("Saved!")
+            }
+            
+        }
+        
+        
     }
     
     func updateUI() {
@@ -88,6 +133,12 @@ class ProfileViewController: UIViewController {
     }
     
     func imageFromData(pictureData: String) -> UIImage? {
+        
+        // !!!IMPORTANT!!!
+        // Decode image from string
+        
+        // TODO: - add to my extensions
+        
         var image: UIImage?
         
         let decodedData = NSData(base64Encoded: pictureData, options: NSData.Base64DecodingOptions(rawValue: 0))
@@ -104,7 +155,63 @@ class ProfileViewController: UIViewController {
     
     @IBAction func actionMenuButtonTapped(_ sender: Any) {
         
+        let user = FUser.currentUser()!
+        
+        let optionMenu = UIAlertController(title: "Menu", message: nil, preferredStyle: .actionSheet)
+        
+        let accountTypeString = user.isAgent ? "You are Agent" : "Become an Agent"
+        
+        let actionAccountType = UIAlertAction(title: accountTypeString, style: .default) { (action) in
+            
+        }
+        
+        let actionRestorePurchase = UIAlertAction(title: "Restore purchase", style: .default) { (action) in
+            
+            
+        }
+        
+        let actionBuyCoins = UIAlertAction(title: "Buy Coins", style: .default) { (action) in
+            
+        }
+        
+        let actionSaveChanges = UIAlertAction(title: "Save changes", style: .default) { (action) in
+            
+            self.saveChanges()
+            
+        }
+        
+        let actionLogout = UIAlertAction(title: "Logout", style: .destructive) { (action) in
+            
+            FUser.logoutCurrentUser(withBlock: { (success) in
+                
+                if success {
+                    let recentVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "MainVC")
+                    self.present(recentVC, animated: true, completion: nil)
+                    
+                    
+                }
+                
+            })
+            
+        }
+        
+        let actionCancel = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
+        
+        
+        optionMenu.addAction(actionSaveChanges)
+        optionMenu.addAction(actionBuyCoins)
+        optionMenu.addAction(actionAccountType)
+        optionMenu.addAction(actionRestorePurchase)
+        optionMenu.addAction(actionLogout)
+        optionMenu.addAction(actionCancel)
+        
+        self.present(optionMenu, animated: true, completion: nil)
+
+        
     }
+    
+    
+    
     
     @IBAction func actionBuyCoinsButtonTapped(_ sender: Any) {
         
@@ -116,6 +223,8 @@ class ProfileViewController: UIViewController {
         imagePickerController.imageLimit = 1
         self.present(imagePickerController, animated: true, completion: nil)
     }
+    
+    
     
 }
 

@@ -164,6 +164,23 @@ class FUser {
     }
     
     
+    // MARK: - LogOut
+    
+    class func logoutCurrentUser(withBlock block: @escaping (_ success: Bool) -> Void) {
+        UserDefaults.standard.removeObject(forKey: "OneSignalId")
+        removeOneSignalId()
+        UserDefaults.standard.removeObject(forKey: kCURRENTUSER)
+        UserDefaults.standard.synchronize()
+        
+        do {
+            try Auth.auth().signOut()
+            block(true)
+        } catch let error {
+            print(error.localizedDescription)
+            block(false)
+        }
+    }
+    
     
 }
 
