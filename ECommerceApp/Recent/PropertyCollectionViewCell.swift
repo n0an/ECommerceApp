@@ -100,6 +100,7 @@ class PropertyCollectionViewCell: UICollectionViewCell {
     
     
     @IBAction func actionMenuButtonTapped(_ sender: Any) {
+        delegate?.didClickMenuButton!(property: property)
     }
     
     

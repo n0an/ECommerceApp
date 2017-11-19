@@ -208,7 +208,7 @@
                             </view>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="U8X-OT-Lzo">
                                 <rect key="frame" x="0.0" y="75" width="375" height="543"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="ey9-z4-Gyv">
                                     <size key="itemSize" width="358" height="254"/>
                                     <size key="headerReferenceSize" width="0.0" height="0.0"/>
@@ -1239,7 +1239,7 @@
                             </view>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="OSX-we-9v6">
                                 <rect key="frame" x="0.0" y="75" width="375" height="543"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="6Hi-Ml-oXX">
                                     <size key="itemSize" width="358" height="254"/>
                                     <size key="headerReferenceSize" width="0.0" height="0.0"/>
@@ -1473,7 +1473,7 @@
                             </view>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="lMJ-kf-lpC">
                                 <rect key="frame" x="0.0" y="75" width="375" height="543"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="9G8-pe-PrN">
                                     <size key="itemSize" width="358" height="254"/>
                                     <size key="headerReferenceSize" width="0.0" height="0.0"/>
@@ -1618,6 +1618,13 @@
                                     <outlet property="delegate" destination="T9C-aL-jZ4" id="iLh-Zx-19P"/>
                                 </connections>
                             </collectionView>
+                            <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="NO MY PROPERTIES" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GaK-dI-0Lr">
+                                <rect key="frame" x="61" y="321" width="251.5" height="24"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="20"/>
+                                <color key="textColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
@@ -1634,6 +1641,7 @@
                     <tabBarItem key="tabBarItem" title="My Properties" image="Sale" id="C7e-YS-XNl"/>
                     <connections>
                         <outlet property="collectionView" destination="lMJ-kf-lpC" id="Do2-pS-Uco"/>
+                        <outlet property="noMyPropsLabel" destination="GaK-dI-0Lr" id="jQu-0A-n1Z"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="aZO-HR-kVS" userLabel="First Responder" sceneMemberID="firstResponder"/>
