@@ -36,6 +36,7 @@
 		183EBC291FBD862200208AEC /* AddPropertyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 183EBC281FBD862200208AEC /* AddPropertyViewController.swift */; };
 		1858C0D21FBB7C8B00F1398F /* ProgressHUD.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 1858C0CF1FBB7C8B00F1398F /* ProgressHUD.bundle */; };
 		1858C0D31FBB7C8B00F1398F /* ProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 1858C0D11FBB7C8B00F1398F /* ProgressHUD.m */; };
+		18AE45031FC1B709002E6283 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18AE45021FC1B709002E6283 /* ProfileViewController.swift */; };
 		93A96A989C4EF60F7297AB84 /* Pods_ECommerceApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 76D5240AF3E8C3E1CB6B60D3 /* Pods_ECommerceApp.framework */; };
 /* End PBXBuildFile section */
 
@@ -76,6 +77,7 @@
 		1858C0CF1FBB7C8B00F1398F /* ProgressHUD.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = ProgressHUD.bundle; sourceTree = "<group>"; };
 		1858C0D01FBB7C8B00F1398F /* ProgressHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProgressHUD.h; sourceTree = "<group>"; };
 		1858C0D11FBB7C8B00F1398F /* ProgressHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProgressHUD.m; sourceTree = "<group>"; };
+		18AE45021FC1B709002E6283 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		76D5240AF3E8C3E1CB6B60D3 /* Pods_ECommerceApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ECommerceApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		83D2C74B81F689F3744313A5 /* Pods-ECommerceApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ECommerceApp.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ECommerceApp/Pods-ECommerceApp.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -132,11 +134,11 @@
 				183E090A1FC183780035106A /* FavoriteProperties */,
 				183E090D1FC187A20035106A /* MyProperties */,
 				183E09041FBE27B50035106A /* PropertyVC */,
+				18AE45041FC1B716002E6283 /* ImageGalleryVC */,
 				183EBC251FBD719C00208AEC /* Model */,
 				183EBC1E1FBCC76B00208AEC /* Settings */,
 				18259C711FBA3687007456A3 /* Main.storyboard */,
-				183E090E1FC195FC0035106A /* ImageGalleryViewController.swift */,
-				183E09101FC198940035106A /* GalleryCollectionViewCell.swift */,
+				18AE45021FC1B709002E6283 /* ProfileViewController.swift */,
 				18259C741FBA3687007456A3 /* Assets.xcassets */,
 				18259C761FBA3687007456A3 /* LaunchScreen.storyboard */,
 				18259C791FBA3687007456A3 /* Info.plist */,
@@ -229,6 +231,15 @@
 				1858C0D11FBB7C8B00F1398F /* ProgressHUD.m */,
 			);
 			path = ProgressHUD;
+			sourceTree = "<group>";
+		};
+		18AE45041FC1B716002E6283 /* ImageGalleryVC */ = {
+			isa = PBXGroup;
+			children = (
+				183E090E1FC195FC0035106A /* ImageGalleryViewController.swift */,
+				183E09101FC198940035106A /* GalleryCollectionViewCell.swift */,
+			);
+			path = ImageGalleryVC;
 			sourceTree = "<group>";
 		};
 		D8A837371397316DDFF162F4 /* Frameworks */ = {
@@ -410,6 +421,7 @@
 				183E08F91FBDF9040035106A /* MapViewController.swift in Sources */,
 				15E9B2971FBAF2D800D1141C /* RegisterViewController.swift in Sources */,
 				183E090F1FC195FC0035106A /* ImageGalleryViewController.swift in Sources */,
+				18AE45031FC1B709002E6283 /* ProfileViewController.swift in Sources */,
 				183E09091FC1772F0035106A /* FavoriteViewController.swift in Sources */,
 				183E09031FBE27A00035106A /* MapViewCell.swift in Sources */,
 				15E9B2991FBB022D00D1141C /* FUser.swift in Sources */,

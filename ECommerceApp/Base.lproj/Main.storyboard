@@ -1662,10 +1662,10 @@
             </objects>
             <point key="canvasLocation" x="1636" y="2183"/>
         </scene>
-        <!--View Controller-->
+        <!--Profile View Controller-->
         <scene sceneID="wok-KW-eQO">
             <objects>
-                <viewController id="MTu-z3-bqY" sceneMemberID="viewController">
+                <viewController id="MTu-z3-bqY" customClass="ProfileViewController" customModule="ECommerceApp" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="1id-ZJ-cSb">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -1691,6 +1691,7 @@
                                         <state key="normal" image="Menu"/>
                                         <connections>
                                             <action selector="actionCameraButtonTapped:" destination="Vxk-7f-4GV" eventType="touchUpInside" id="9NS-WK-xn8"/>
+                                            <action selector="actionMenuButtonTapped:" destination="MTu-z3-bqY" eventType="touchUpInside" id="YZe-Bp-DA0"/>
                                             <action selector="actionMixerButtonTapped:" destination="Y2L-VS-PGG" eventType="touchUpInside" id="BJe-C1-WPv"/>
                                         </connections>
                                     </button>
@@ -1698,6 +1699,7 @@
                                         <rect key="frame" x="8" y="27" width="25" height="25"/>
                                         <state key="normal" image="Back"/>
                                         <connections>
+                                            <action selector="actionBackButtonTapped:" destination="MTu-z3-bqY" eventType="touchUpInside" id="wtr-vE-3tj"/>
                                             <action selector="actionCameraButtonTapped:" destination="Vxk-7f-4GV" eventType="touchUpInside" id="eR2-KL-qKB"/>
                                             <action selector="actionMixerButtonTapped:" destination="Y2L-VS-PGG" eventType="touchUpInside" id="dQx-BD-yDf"/>
                                         </connections>
@@ -1728,6 +1730,9 @@
                             <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zGh-nQ-Cft">
                                 <rect key="frame" x="212" y="95" width="25" height="25"/>
                                 <state key="normal" image="img_camera"/>
+                                <connections>
+                                    <action selector="actionChangeAvatarButtonTapped:" destination="MTu-z3-bqY" eventType="touchUpInside" id="Ibx-2z-GE8"/>
+                                </connections>
                             </button>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Mobile" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="WYH-MX-vDH">
                                 <rect key="frame" x="16" y="296" width="343" height="30"/>
@@ -1756,6 +1761,9 @@
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bkx-7U-ORR">
                                 <rect key="frame" x="212" y="171" width="25" height="25"/>
                                 <state key="normal" image="coins"/>
+                                <connections>
+                                    <action selector="actionBuyCoinsButtonTapped:" destination="MTu-z3-bqY" eventType="touchUpInside" id="tPh-bN-WGe"/>
+                                </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1,000" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qzu-ia-1fm">
                                 <rect key="frame" x="245.5" y="177" width="113.5" height="17"/>
@@ -1793,6 +1801,14 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="zb7-N6-7hA"/>
                     </view>
+                    <connections>
+                        <outlet property="additionalNumberTextField" destination="JXB-pM-NmO" id="2xs-Hj-evA"/>
+                        <outlet property="avatarImageView" destination="ED9-Ii-ZgQ" id="ddQ-xZ-kJR"/>
+                        <outlet property="coinsLabel" destination="qzu-ia-1fm" id="PeM-Yj-X9G"/>
+                        <outlet property="lastNameTextField" destination="r57-Bf-n4l" id="HN2-X3-xCt"/>
+                        <outlet property="mobileNumberTextField" destination="WYH-MX-vDH" id="9Dt-38-IgH"/>
+                        <outlet property="nameTextField" destination="UM9-8W-6dr" id="Vgg-TO-qlH"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="9yQ-JN-GNd" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
