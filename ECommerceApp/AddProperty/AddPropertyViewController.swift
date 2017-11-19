@@ -169,13 +169,26 @@ class AddPropertyViewController: UIViewController {
     
     func save() {
         
+        
+        
         if titleTextField.text != "" &&
             referenceCodeTextField.text != "" &&
             advertisementTypeTextField.text != "" &&
             propertyTypeTextField.text != "" &&
             priceTextField.text != "" {
             
-            let newProperty = Property()
+            var newProperty: Property!
+            
+            if property != nil {
+                // editing property
+                
+                newProperty = property!
+                
+            } else {
+                
+                newProperty = Property()
+            }
+            
             
             ProgressHUD.show("Saving...")
             
@@ -317,6 +330,16 @@ class AddPropertyViewController: UIViewController {
     
     
     @IBAction func actionCameraButtonTapped(_ sender: Any) {
+        
+        if property != nil {
+            let vc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "ImageGalleryViewController") as! ImageGalleryViewController
+            
+            vc.property = property!
+            
+            self.present(vc, animated: true, completion: nil)
+            return
+        }
+        
         let imagePickerController = ImagePickerController()
         imagePickerController.delegate = self
         imagePickerController.imageLimit = kMAXIMAGENUMBER
@@ -549,6 +572,14 @@ extension AddPropertyViewController: MapViewControllerDelegate {
         
         self.locationCoordinates = coordinate
         print("coordinates = \(coordinate)")
+    }
+    
+    
+}
+
+extension AddPropertyViewController: ImageGalleryViewControllerDelegate {
+    func didFinishEditingImages(allImages: [UIImage]) {
+        
     }
     
     
