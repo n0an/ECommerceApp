@@ -66,16 +66,20 @@ class FBNotification {
 
 func saveNotificationInBackground(fbNotification: FBNotification) {
     
-    fbNotification.notificatonId = notifRef.childByAutoId().key
+    let newNotifRef = notifRef.childByAutoId()
     
-    notifRef.setValue(notificationDictionaryFrom(fbNotification: fbNotification))
+    fbNotification.notificatonId = newNotifRef.key
+    
+    newNotifRef.setValue(notificationDictionaryFrom(fbNotification: fbNotification))
 }
 
 func saveNotificationInBackground(fbNotification: FBNotification, completion: @escaping (_ error: Error?) -> ()) {
     
-    fbNotification.notificatonId = notifRef.childByAutoId().key
+    let newNotifRef = notifRef.childByAutoId()
     
-    notifRef.setValue(notificationDictionaryFrom(fbNotification: fbNotification)) { (error, firRef) in
+    fbNotification.notificatonId = newNotifRef.key
+    
+    newNotifRef.setValue(notificationDictionaryFrom(fbNotification: fbNotification)) { (error, firRef) in
         completion(error)
     }
 }

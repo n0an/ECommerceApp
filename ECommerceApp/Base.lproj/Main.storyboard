@@ -1838,8 +1838,8 @@
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bwN-Dt-EbN">
-                                        <rect key="frame" x="8" y="27" width="25" height="25"/>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bwN-Dt-EbN">
+                                        <rect key="frame" x="8" y="25" width="25" height="25"/>
                                         <state key="normal" image="Back"/>
                                         <connections>
                                             <action selector="actionBackButtonTapped:" destination="deH-6J-RhY" eventType="touchUpInside" id="OHr-uo-X8R"/>
@@ -1852,6 +1852,7 @@
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="trailing" secondItem="Jxc-3f-hVI" secondAttribute="trailing" id="8Ko-EG-VcA"/>
+                                    <constraint firstItem="bwN-Dt-EbN" firstAttribute="centerY" secondItem="Ndw-KH-JHN" secondAttribute="centerY" id="Z0G-bD-lTi"/>
                                     <constraint firstItem="GgX-0K-K1f" firstAttribute="leading" secondItem="Ndw-KH-JHN" secondAttribute="leading" constant="8" id="gSA-f0-BPJ"/>
                                     <constraint firstItem="bwN-Dt-EbN" firstAttribute="leading" secondItem="Ndw-KH-JHN" secondAttribute="leading" constant="8" id="jXJ-pK-Len"/>
                                     <constraint firstAttribute="trailing" secondItem="GgX-0K-K1f" secondAttribute="trailing" constant="8" id="lFd-ye-vgB"/>
