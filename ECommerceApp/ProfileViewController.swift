@@ -215,6 +215,8 @@ class ProfileViewController: UIViewController {
     
     @IBAction func actionBuyCoinsButtonTapped(_ sender: Any) {
         
+        
+        
     }
     
     @IBAction func actionChangeAvatarButtonTapped(_ sender: Any) {

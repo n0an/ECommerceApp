@@ -34,6 +34,9 @@
 		183EBC231FBCC8AB00208AEC /* PropertyCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 183EBC221FBCC8AB00208AEC /* PropertyCollectionViewCell.swift */; };
 		183EBC271FBD71AD00208AEC /* Property.swift in Sources */ = {isa = PBXBuildFile; fileRef = 183EBC261FBD71AD00208AEC /* Property.swift */; };
 		183EBC291FBD862200208AEC /* AddPropertyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 183EBC281FBD862200208AEC /* AddPropertyViewController.swift */; };
+		1846FA4F1FC22485001E03D9 /* NotificationsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1846FA4E1FC22485001E03D9 /* NotificationsViewController.swift */; };
+		1846FA511FC224A0001E03D9 /* NotificationCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1846FA501FC224A0001E03D9 /* NotificationCell.swift */; };
+		1849938A1FC2265100B625FC /* FBNotification.swift in Sources */ = {isa = PBXBuildFile; fileRef = 184993891FC2265100B625FC /* FBNotification.swift */; };
 		1858C0D21FBB7C8B00F1398F /* ProgressHUD.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 1858C0CF1FBB7C8B00F1398F /* ProgressHUD.bundle */; };
 		1858C0D31FBB7C8B00F1398F /* ProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 1858C0D11FBB7C8B00F1398F /* ProgressHUD.m */; };
 		18AE45031FC1B709002E6283 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18AE45021FC1B709002E6283 /* ProfileViewController.swift */; };
@@ -74,6 +77,9 @@
 		183EBC221FBCC8AB00208AEC /* PropertyCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PropertyCollectionViewCell.swift; sourceTree = "<group>"; };
 		183EBC261FBD71AD00208AEC /* Property.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Property.swift; sourceTree = "<group>"; };
 		183EBC281FBD862200208AEC /* AddPropertyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddPropertyViewController.swift; sourceTree = "<group>"; };
+		1846FA4E1FC22485001E03D9 /* NotificationsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationsViewController.swift; sourceTree = "<group>"; };
+		1846FA501FC224A0001E03D9 /* NotificationCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationCell.swift; sourceTree = "<group>"; };
+		184993891FC2265100B625FC /* FBNotification.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FBNotification.swift; sourceTree = "<group>"; };
 		1858C0CF1FBB7C8B00F1398F /* ProgressHUD.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = ProgressHUD.bundle; sourceTree = "<group>"; };
 		1858C0D01FBB7C8B00F1398F /* ProgressHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProgressHUD.h; sourceTree = "<group>"; };
 		1858C0D11FBB7C8B00F1398F /* ProgressHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProgressHUD.m; sourceTree = "<group>"; };
@@ -138,6 +144,8 @@
 				183EBC251FBD719C00208AEC /* Model */,
 				183EBC1E1FBCC76B00208AEC /* Settings */,
 				18259C711FBA3687007456A3 /* Main.storyboard */,
+				1846FA4E1FC22485001E03D9 /* NotificationsViewController.swift */,
+				1846FA501FC224A0001E03D9 /* NotificationCell.swift */,
 				18AE45021FC1B709002E6283 /* ProfileViewController.swift */,
 				18259C741FBA3687007456A3 /* Assets.xcassets */,
 				18259C761FBA3687007456A3 /* LaunchScreen.storyboard */,
@@ -219,6 +227,7 @@
 			children = (
 				15E9B2981FBB022D00D1141C /* FUser.swift */,
 				183EBC261FBD71AD00208AEC /* Property.swift */,
+				184993891FC2265100B625FC /* FBNotification.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -408,6 +417,7 @@
 			files = (
 				183E08F61FBDB9B90035106A /* Downloader.swift in Sources */,
 				183E09011FBE27700035106A /* FeaturesLabelCell.swift in Sources */,
+				1849938A1FC2265100B625FC /* FBNotification.swift in Sources */,
 				183E09061FBE28050035106A /* DescriptionCell.swift in Sources */,
 				183E08FB1FBE1FC20035106A /* DetailsCell.swift in Sources */,
 				183E08FF1FBE27610035106A /* MainInfoCell.swift in Sources */,
@@ -421,6 +431,7 @@
 				183E08F91FBDF9040035106A /* MapViewController.swift in Sources */,
 				15E9B2971FBAF2D800D1141C /* RegisterViewController.swift in Sources */,
 				183E090F1FC195FC0035106A /* ImageGalleryViewController.swift in Sources */,
+				1846FA4F1FC22485001E03D9 /* NotificationsViewController.swift in Sources */,
 				18AE45031FC1B709002E6283 /* ProfileViewController.swift in Sources */,
 				183E09091FC1772F0035106A /* FavoriteViewController.swift in Sources */,
 				183E09031FBE27A00035106A /* MapViewCell.swift in Sources */,
@@ -428,6 +439,7 @@
 				183EBC231FBCC8AB00208AEC /* PropertyCollectionViewCell.swift in Sources */,
 				183E09111FC198940035106A /* GalleryCollectionViewCell.swift in Sources */,
 				183E090C1FC1875F0035106A /* MyPropertiesViewController.swift in Sources */,
+				1846FA511FC224A0001E03D9 /* NotificationCell.swift in Sources */,
 				15E9B29B1FBB058700D1141C /* Settings.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

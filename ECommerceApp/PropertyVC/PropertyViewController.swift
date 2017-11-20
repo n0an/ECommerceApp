@@ -53,6 +53,8 @@ class PropertyViewController: UIViewController {
         
         imageScrollView.addGestureRecognizer(tapGesture)
         
+        setupUI()
+        
         // image
         if let imageLinks = property.imageLinks, imageLinks != "" {
             
@@ -116,6 +118,17 @@ class PropertyViewController: UIViewController {
     
     
     @IBAction func actionCallButtonTapped(_ sender: Any) {
+        
+        let currentUser = FUser.currentUser()!
+        
+//        let fbNotification = FBNotification(buyerId: currentUser.objectID, agentId: property.ownerId!, createdAt: Date(), phoneNumber: currentUser.phoneNumber, additionalPhoneNumber: currentUser.additionalPhoneNumber, buyerFullName: currentUser.fullName, propertyReference: property.referenceCode!, propertyObjectId: property.objectId!)
+        
+        let fbNotification = FBNotification(buyerId: currentUser.objectID, agentId: currentUser.objectID, createdAt: Date(), phoneNumber: currentUser.phoneNumber, additionalPhoneNumber: currentUser.additionalPhoneNumber, buyerFullName: currentUser.fullName, propertyReference: property.referenceCode!, propertyObjectId: property.objectId!)
+
+        
+        
+        saveNotificationInBackground(fbNotification: fbNotification)
+        
     }
     
 
