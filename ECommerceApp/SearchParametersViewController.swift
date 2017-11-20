@@ -1,0 +1,221 @@
+//
+//  SearchParametersViewController.swift
+//  ECommerceApp
+//
+//  Created by Anton Novoselov on 20/11/2017.
+//  Copyright © 2017 Anton Novoselov. All rights reserved.
+//
+
+import UIKit
+
+class SearchParametersViewController: UIViewController {
+
+    @IBOutlet weak var scrollView: UIScrollView!
+    @IBOutlet weak var mainView: UIView!
+    
+    @IBOutlet weak var advertisementTypeTextField: UITextField!
+    @IBOutlet weak var propertyTypeTextField: UITextField!
+    @IBOutlet weak var bedroomsTextField: UITextField!
+    @IBOutlet weak var bathroomsTextField: UITextField!
+    @IBOutlet weak var priceTextField: UITextField!
+    @IBOutlet weak var buildYearTextField: UITextField!
+    @IBOutlet weak var cityTextField: UITextField!
+    @IBOutlet weak var countryTextField: UITextField!
+    @IBOutlet weak var propertySizeTextField: UITextField!
+    
+    var furnishedSwitchValue = false
+    var centralHeatingSwitchValue = false
+    var airConditionerSwitchValue = false
+    var solarWaterSwitchValue = false
+    var storeRoomSwitchValue = false
+    
+    var propertyTypePicker = UIPickerView()
+    var advertisementTypePicker = UIPickerView()
+    var bedroomPicker = UIPickerView()
+    var bathroomPicker = UIPickerView()
+    var pricePicker = UIPickerView()
+    var yearPicker = UIPickerView()
+    
+    var yearArray: [String] = []
+    let minPriceArray = ["Minimum", "Any", "10000", "20000", "30000", "40000", "50000", "60000", "70000", "80000", "90000", "100000", "200000", "500000"]
+    
+    let maxPriceArray = ["Maximum", "Any", "10000", "20000", "30000", "40000", "50000", "60000", "70000", "80000", "90000", "100000", "200000", "500000"]
+    
+    var bathroomsArray = ["Any", "1+", "2+", "3+"]
+    var bedroomsArray = ["Any", "1+", "2+", "3+", "4+", "5+"]
+    
+    var minPrice = ""
+    var maxPrice = ""
+    
+    var whereClause = ""
+    
+    var activeTextField: UITextField?
+
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        scrollView.contentSize = CGSize(width: self.view.bounds.width, height: mainView.frame.height + 30)
+        
+        setupYearsArray()
+        
+        setupPickers()
+        
+    }
+    
+    func setupYearsArray() {
+        
+        let years = Array(1800...2030)
+        
+        yearArray = years.map { "\($0)" }
+        yearArray.append("Any")
+        
+        yearArray.reverse()
+    }
+    
+    func setupPickers() {
+        
+        propertyTypePicker.delegate = self
+        advertisementTypePicker.delegate = self
+        bedroomPicker.delegate = self
+        bathroomPicker.delegate = self
+        pricePicker.delegate = self
+        yearPicker.delegate = self
+        
+        
+        let toolbar = UIToolbar()
+        toolbar.sizeToFit()
+        
+        let flexibleBarButtonItem = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil)
+        
+        let doneButton = UIBarButtonItem(barButtonSystemItem: .done, target: self, action: #selector(self.toolbarDonePressed))
+        
+        toolbar.setItems([flexibleBarButtonItem, doneButton], animated: true)
+        
+        // !!!IMPORTANT!!!
+        // DatePicker and UIPicker for textFields
+        
+        advertisementTypeTextField.inputAccessoryView = toolbar
+        advertisementTypeTextField.inputView = advertisementTypePicker
+
+        propertyTypeTextField.inputAccessoryView = toolbar
+        propertyTypeTextField.inputView = propertyTypePicker
+
+        
+        bedroomsTextField.inputAccessoryView = toolbar
+        bedroomsTextField.inputView = bedroomPicker
+
+        bathroomsTextField.inputAccessoryView = toolbar
+        bathroomsTextField.inputView = bathroomPicker
+
+        priceTextField.inputAccessoryView = toolbar
+        priceTextField.inputView = pricePicker
+
+        buildYearTextField.inputAccessoryView = toolbar
+        buildYearTextField.inputView = yearPicker
+
+        
+    }
+    
+    @objc func toolbarDonePressed() {
+        
+    }
+    
+    @IBAction func actionBackButtonTapped(_ sender: Any) {
+        self.dismiss(animated: true, completion: nil)
+    }
+    
+    @IBAction func actionDoneButtonTapped(_ sender: Any) {
+        
+    }
+    
+    
+    
+    @IBAction func actionCentralHeatingSwitchValueChanged(_ sender: Any) {
+        centralHeatingSwitchValue = !centralHeatingSwitchValue
+    }
+    
+    
+    @IBAction func actionSolarWaterSwitchValueChanged(_ sender: Any) {
+        solarWaterSwitchValue = !solarWaterSwitchValue
+    }
+    
+    
+    @IBAction func actionStoreRoomSwitchValueChanged(_ sender: Any) {
+        storeRoomSwitchValue = !storeRoomSwitchValue
+    }
+    
+    @IBAction func actionAirConditionerSwitchValueChanged(_ sender: Any) {
+        airConditionerSwitchValue = !airConditionerSwitchValue
+    }
+    
+    
+    @IBAction func actionFurnishedSwitchValueChanged(_ sender: Any) {
+        furnishedSwitchValue = !furnishedSwitchValue
+    }
+    
+    
+
+}
+
+
+extension SearchParametersViewController: UIPickerViewDataSource, UIPickerViewDelegate {
+    func numberOfComponents(in pickerView: UIPickerView) -> Int {
+        if pickerView == pricePicker {
+            return 2
+        }
+        return 1
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
+        
+        switch pickerView {
+        case propertyTypePicker:
+            return propertyTypes.count
+        case advertisementTypePicker:
+            return advertismentTypes.count
+        case bedroomPicker:
+            return bedroomsArray.count
+        case bathroomPicker:
+            return bathroomsArray.count
+        case pricePicker:
+            return minPriceArray.count
+        case yearPicker:
+            return yearArray.count
+        default:
+            return 0
+        }
+        
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
+        
+        switch pickerView {
+        case propertyTypePicker:
+            return propertyTypes[row]
+        case advertisementTypePicker:
+            return advertismentTypes[row]
+        case bedroomPicker:
+            return bedroomsArray[row]
+        case bathroomPicker:
+            return bathroomsArray[row]
+        case pricePicker:
+            return component == 0 ? minPriceArray[row] : maxPriceArray[row]
+        case yearPicker:
+            return yearArray[row]
+        default:
+            return nil
+        }
+        
+        
+    }
+    
+    
+}
+
+
+
+
+
+
+

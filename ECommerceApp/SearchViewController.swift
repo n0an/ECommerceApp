@@ -22,7 +22,9 @@ class SearchViewController: UIViewController {
     
     
     @IBAction func actionMixerButtonTapped(_ sender: Any) {
+        let vc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "SearchParametersViewController") as! SearchParametersViewController
         
+        self.present(vc, animated: true, completion: nil)
     }
 }
 

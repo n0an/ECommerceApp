@@ -888,10 +888,10 @@
             </objects>
             <point key="canvasLocation" x="1636" y="-55"/>
         </scene>
-        <!--View Controller-->
+        <!--Search Parameters View Controller-->
         <scene sceneID="eOK-e7-qxF">
             <objects>
-                <viewController id="z0l-yd-Hde" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="SearchParametersViewController" id="z0l-yd-Hde" customClass="SearchParametersViewController" customModule="ECommerceApp" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="3lJ-7G-91j">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -916,6 +916,7 @@
                                         <rect key="frame" x="8" y="31" width="25" height="25"/>
                                         <state key="normal" image="Back"/>
                                         <connections>
+                                            <action selector="actionBackButtonTapped:" destination="z0l-yd-Hde" eventType="touchUpInside" id="6O0-jv-2xf"/>
                                             <action selector="actionBackButtonTapped:" destination="MTu-z3-bqY" eventType="touchUpInside" id="GCG-NB-5Jc"/>
                                             <action selector="actionCameraButtonTapped:" destination="Vxk-7f-4GV" eventType="touchUpInside" id="fP5-Gq-8zn"/>
                                             <action selector="actionMixerButtonTapped:" destination="Y2L-VS-PGG" eventType="touchUpInside" id="LkY-F6-IXd"/>
@@ -927,6 +928,7 @@
                                         <state key="normal" title="Done"/>
                                         <connections>
                                             <action selector="actionCameraButtonTapped:" destination="Vxk-7f-4GV" eventType="touchUpInside" id="EJU-zr-V2d"/>
+                                            <action selector="actionDoneButtonTapped:" destination="z0l-yd-Hde" eventType="touchUpInside" id="y3C-IB-9pH"/>
                                             <action selector="actionMenuButtonTapped:" destination="MTu-z3-bqY" eventType="touchUpInside" id="civ-bv-KTU"/>
                                             <action selector="actionMixerButtonTapped:" destination="Y2L-VS-PGG" eventType="touchUpInside" id="d9G-Rm-NEW"/>
                                         </connections>
@@ -953,7 +955,7 @@
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="G8w-lU-nSv" userLabel="TopView">
                                         <rect key="frame" x="0.0" y="0.0" width="375" height="600"/>
                                         <subviews>
-                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Reference Code *" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="uar-Hs-rh1">
+                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Select" textAlignment="right" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="uar-Hs-rh1">
                                                 <rect key="frame" x="152" y="20" width="215" height="30"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="215" id="83Z-R4-VYj"/>
@@ -968,7 +970,7 @@
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Reference Code *" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Pwd-Cj-y5M">
+                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Select" textAlignment="right" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Pwd-Cj-y5M">
                                                 <rect key="frame" x="152" y="58" width="215" height="30"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="215" id="Fzu-dL-KyH"/>
@@ -983,7 +985,7 @@
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Reference Code *" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="caw-Be-OCX">
+                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Select" textAlignment="right" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="caw-Be-OCX">
                                                 <rect key="frame" x="152" y="96" width="215" height="30"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="215" id="aKc-st-35E"/>
@@ -998,7 +1000,7 @@
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Reference Code *" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="OJf-M3-SqS">
+                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Select" textAlignment="right" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="OJf-M3-SqS">
                                                 <rect key="frame" x="152" y="134" width="215" height="30"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="215" id="Jsg-Bt-qNM"/>
@@ -1013,7 +1015,7 @@
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Reference Code *" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="zvf-Yh-1rY">
+                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Select" textAlignment="right" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="zvf-Yh-1rY">
                                                 <rect key="frame" x="152" y="172" width="215" height="30"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="215" id="r67-Ai-4xd"/>
@@ -1028,7 +1030,7 @@
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Reference Code *" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="XhE-oL-hCE">
+                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Select" textAlignment="right" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="XhE-oL-hCE">
                                                 <rect key="frame" x="152" y="210" width="215" height="30"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="215" id="IGX-7t-oqe"/>
@@ -1043,7 +1045,7 @@
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Reference Code *" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="LX0-H6-uye">
+                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="City" textAlignment="right" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="LX0-H6-uye">
                                                 <rect key="frame" x="152" y="248" width="215" height="30"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="215" id="Ws5-Ls-61q"/>
@@ -1058,7 +1060,7 @@
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Reference Code *" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="0Sb-9c-iH4">
+                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Country" textAlignment="right" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="0Sb-9c-iH4">
                                                 <rect key="frame" x="152" y="286" width="215" height="30"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="215" id="2tk-Xc-DaL"/>
@@ -1079,7 +1081,7 @@
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Reference Code *" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="5hI-W0-WHz">
+                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Property Size" textAlignment="right" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="5hI-W0-WHz">
                                                 <rect key="frame" x="152" y="324" width="215" height="30"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="215" id="2So-NV-fda"/>
@@ -1091,31 +1093,31 @@
                                             <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="6uM-VC-H8c">
                                                 <rect key="frame" x="318" y="362" width="51" height="31"/>
                                                 <connections>
-                                                    <action selector="actionSwitchTriggered:" destination="Vxk-7f-4GV" eventType="valueChanged" id="iBe-1B-zz5"/>
+                                                    <action selector="actionCentralHeatingSwitchValueChanged:" destination="z0l-yd-Hde" eventType="valueChanged" id="yff-bI-7CR"/>
                                                 </connections>
                                             </switch>
                                             <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="TQM-47-7iE">
                                                 <rect key="frame" x="318" y="401" width="51" height="31"/>
                                                 <connections>
-                                                    <action selector="actionSwitchTriggered:" destination="Vxk-7f-4GV" eventType="valueChanged" id="Puz-cC-q6f"/>
+                                                    <action selector="actionSolarWaterSwitchValueChanged:" destination="z0l-yd-Hde" eventType="valueChanged" id="txk-ql-3kp"/>
                                                 </connections>
                                             </switch>
                                             <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="kOQ-ld-ZIP">
                                                 <rect key="frame" x="318" y="440" width="51" height="31"/>
                                                 <connections>
-                                                    <action selector="actionSwitchTriggered:" destination="Vxk-7f-4GV" eventType="valueChanged" id="zsc-KV-BiH"/>
+                                                    <action selector="actionStoreRoomSwitchValueChanged:" destination="z0l-yd-Hde" eventType="valueChanged" id="0sf-CR-SFj"/>
                                                 </connections>
                                             </switch>
                                             <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="soQ-JG-v0k">
                                                 <rect key="frame" x="318" y="479" width="51" height="31"/>
                                                 <connections>
-                                                    <action selector="actionSwitchTriggered:" destination="Vxk-7f-4GV" eventType="valueChanged" id="beb-qv-J5r"/>
+                                                    <action selector="actionAirConditionerSwitchValueChanged:" destination="z0l-yd-Hde" eventType="valueChanged" id="Jtm-oo-A25"/>
                                                 </connections>
                                             </switch>
                                             <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="5V1-pb-Pio">
                                                 <rect key="frame" x="318" y="518" width="51" height="31"/>
                                                 <connections>
-                                                    <action selector="actionSwitchTriggered:" destination="Vxk-7f-4GV" eventType="valueChanged" id="hzx-6m-dHa"/>
+                                                    <action selector="actionFurnishedSwitchValueChanged:" destination="z0l-yd-Hde" eventType="valueChanged" id="M40-JE-VdW"/>
                                                 </connections>
                                             </switch>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Central Heating" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="q0h-2G-mSz">
@@ -1245,6 +1247,19 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="Xo5-tK-MmG"/>
                     </view>
+                    <connections>
+                        <outlet property="advertisementTypeTextField" destination="uar-Hs-rh1" id="Daj-sd-QOr"/>
+                        <outlet property="bathroomsTextField" destination="OJf-M3-SqS" id="jbh-YD-ROH"/>
+                        <outlet property="bedroomsTextField" destination="caw-Be-OCX" id="4aX-1W-Eh2"/>
+                        <outlet property="buildYearTextField" destination="XhE-oL-hCE" id="ied-VJ-9n3"/>
+                        <outlet property="cityTextField" destination="LX0-H6-uye" id="pSL-dc-wky"/>
+                        <outlet property="countryTextField" destination="0Sb-9c-iH4" id="uhh-Np-pGW"/>
+                        <outlet property="mainView" destination="G8w-lU-nSv" id="4S6-fA-pcu"/>
+                        <outlet property="priceTextField" destination="zvf-Yh-1rY" id="RT7-KO-uMZ"/>
+                        <outlet property="propertySizeTextField" destination="5hI-W0-WHz" id="vqp-9j-sTb"/>
+                        <outlet property="propertyTypeTextField" destination="Pwd-Cj-y5M" id="iqj-5D-rsl"/>
+                        <outlet property="scrollView" destination="QLV-3s-7jm" id="Kgu-Fv-CaX"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="fCz-jU-adC" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
