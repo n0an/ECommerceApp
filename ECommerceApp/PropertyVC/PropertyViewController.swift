@@ -121,13 +121,15 @@ class PropertyViewController: UIViewController {
         
         let currentUser = FUser.currentUser()!
         
-//        let fbNotification = FBNotification(buyerId: currentUser.objectID, agentId: property.ownerId!, createdAt: Date(), phoneNumber: currentUser.phoneNumber, additionalPhoneNumber: currentUser.additionalPhoneNumber, buyerFullName: currentUser.fullName, propertyReference: property.referenceCode!, propertyObjectId: property.objectId!)
+        let message = "I am interested in property with reference code \(property.referenceCode!)"
         
-        let fbNotification = FBNotification(buyerId: currentUser.objectID, agentId: currentUser.objectID, createdAt: Date(), phoneNumber: currentUser.phoneNumber, additionalPhoneNumber: currentUser.additionalPhoneNumber, buyerFullName: currentUser.fullName, propertyReference: property.referenceCode!, propertyObjectId: property.objectId!)
-
+        sendPushNotification(toProperty: property, message: message)
         
+        let fbNotification = FBNotification(buyerId: currentUser.objectID, agentId: property.ownerId!, createdAt: Date(), phoneNumber: currentUser.phoneNumber, additionalPhoneNumber: currentUser.additionalPhoneNumber, buyerFullName: currentUser.fullName, propertyReference: property.referenceCode!, propertyObjectId: property.objectId!)
         
         saveNotificationInBackground(fbNotification: fbNotification)
+        
+       
         
     }
     

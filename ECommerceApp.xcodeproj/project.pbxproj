@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		15985EB41FC32AB600387193 /* PushNotifications.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15985EB31FC32AB600387193 /* PushNotifications.swift */; };
 		15E9B2951FBAF09100D1141C /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15E9B2941FBAF09100D1141C /* Constants.swift */; };
 		15E9B2971FBAF2D800D1141C /* RegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15E9B2961FBAF2D800D1141C /* RegisterViewController.swift */; };
 		15E9B2991FBB022D00D1141C /* FUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15E9B2981FBB022D00D1141C /* FUser.swift */; };
@@ -46,6 +47,7 @@
 /* Begin PBXFileReference section */
 		052B37B353C2A71404567A14 /* Pods-ECommerceApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ECommerceApp.release.xcconfig"; path = "Pods/Target Support Files/Pods-ECommerceApp/Pods-ECommerceApp.release.xcconfig"; sourceTree = "<group>"; };
 		1565483B1FBAEB3700605F43 /* ECommerceApp-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "ECommerceApp-Bridging-Header.h"; sourceTree = "<group>"; };
+		15985EB31FC32AB600387193 /* PushNotifications.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PushNotifications.swift; sourceTree = "<group>"; };
 		15E9B2941FBAF09100D1141C /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		15E9B2961FBAF2D800D1141C /* RegisterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterViewController.swift; sourceTree = "<group>"; };
 		15E9B2981FBB022D00D1141C /* FUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FUser.swift; sourceTree = "<group>"; };
@@ -111,6 +113,15 @@
 			name = Pods;
 			sourceTree = "<group>";
 		};
+		15985EB51FC32AC600387193 /* NotificationsVC */ = {
+			isa = PBXGroup;
+			children = (
+				1846FA4E1FC22485001E03D9 /* NotificationsViewController.swift */,
+				1846FA501FC224A0001E03D9 /* NotificationCell.swift */,
+			);
+			path = NotificationsVC;
+			sourceTree = "<group>";
+		};
 		18259C611FBA3687007456A3 = {
 			isa = PBXGroup;
 			children = (
@@ -141,11 +152,11 @@
 				183E090D1FC187A20035106A /* MyProperties */,
 				183E09041FBE27B50035106A /* PropertyVC */,
 				18AE45041FC1B716002E6283 /* ImageGalleryVC */,
+				15985EB51FC32AC600387193 /* NotificationsVC */,
 				183EBC251FBD719C00208AEC /* Model */,
 				183EBC1E1FBCC76B00208AEC /* Settings */,
 				18259C711FBA3687007456A3 /* Main.storyboard */,
-				1846FA4E1FC22485001E03D9 /* NotificationsViewController.swift */,
-				1846FA501FC224A0001E03D9 /* NotificationCell.swift */,
+				15985EB31FC32AB600387193 /* PushNotifications.swift */,
 				18AE45021FC1B709002E6283 /* ProfileViewController.swift */,
 				18259C741FBA3687007456A3 /* Assets.xcassets */,
 				18259C761FBA3687007456A3 /* LaunchScreen.storyboard */,
@@ -435,6 +446,7 @@
 				18AE45031FC1B709002E6283 /* ProfileViewController.swift in Sources */,
 				183E09091FC1772F0035106A /* FavoriteViewController.swift in Sources */,
 				183E09031FBE27A00035106A /* MapViewCell.swift in Sources */,
+				15985EB41FC32AB600387193 /* PushNotifications.swift in Sources */,
 				15E9B2991FBB022D00D1141C /* FUser.swift in Sources */,
 				183EBC231FBCC8AB00208AEC /* PropertyCollectionViewCell.swift in Sources */,
 				183E09111FC198940035106A /* GalleryCollectionViewCell.swift in Sources */,
