@@ -1954,20 +1954,29 @@
                                     <outlet property="delegate" destination="deH-6J-RhY" id="jUM-vO-H6q"/>
                                 </connections>
                             </tableView>
+                            <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="NO NOTIFICATIONS" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tOY-fA-Xxw">
+                                <rect key="frame" x="95" y="321" width="183.5" height="24"/>
+                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="20"/>
+                                <color key="textColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="ln9-fh-2Wa" firstAttribute="leading" secondItem="AOz-f8-5ur" secondAttribute="leading" id="3VZ-dZ-jfJ"/>
                             <constraint firstItem="ln9-fh-2Wa" firstAttribute="trailing" secondItem="AOz-f8-5ur" secondAttribute="trailing" id="3qt-RZ-BWE"/>
                             <constraint firstItem="Ndw-KH-JHN" firstAttribute="trailing" secondItem="AOz-f8-5ur" secondAttribute="trailing" id="6NX-fH-aMQ"/>
+                            <constraint firstItem="tOY-fA-Xxw" firstAttribute="centerY" secondItem="wE8-Ci-CJS" secondAttribute="centerY" id="9OY-tc-o0A"/>
                             <constraint firstItem="Ndw-KH-JHN" firstAttribute="leading" secondItem="AOz-f8-5ur" secondAttribute="leading" id="Fmp-4H-ElN"/>
                             <constraint firstItem="ln9-fh-2Wa" firstAttribute="top" secondItem="Ndw-KH-JHN" secondAttribute="bottom" id="ORg-0F-WrD"/>
                             <constraint firstItem="Ndw-KH-JHN" firstAttribute="top" secondItem="wE8-Ci-CJS" secondAttribute="top" id="Wf5-9F-k0K"/>
+                            <constraint firstItem="tOY-fA-Xxw" firstAttribute="centerX" secondItem="wE8-Ci-CJS" secondAttribute="centerX" id="v9e-EO-OlW"/>
                             <constraint firstItem="ln9-fh-2Wa" firstAttribute="bottom" secondItem="AOz-f8-5ur" secondAttribute="bottom" id="wna-fr-w52"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="AOz-f8-5ur"/>
                     </view>
                     <connections>
+                        <outlet property="noNotificationsLabel" destination="tOY-fA-Xxw" id="yRR-aM-Wfn"/>
                         <outlet property="tableView" destination="ln9-fh-2Wa" id="a3N-JF-eGP"/>
                     </connections>
                 </viewController>

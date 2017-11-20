@@ -17,8 +17,23 @@ class NotificationCell: UITableViewCell {
     
     
     
-    func configureCell() {
+    func configureCell(fbNotification: FBNotification) {
         
+        var phone = fbNotification.phoneNumber
+        
+        if fbNotification.additionalPhoneNumber != "" {
+            phone += ", " + fbNotification.additionalPhoneNumber
+        }
+        
+        fullnameLabel.text = fbNotification.buyerFullName
+        telnumberLabel.text = phone
+        propertyCodeLabel.text = fbNotification.propertyReference
+        
+        
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "dd.MM.YYYY"
+        
+        dateLabel.text = dateFormatter.string(from: fbNotification.createdAt)
     }
     
     
