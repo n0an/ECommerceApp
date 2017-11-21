@@ -20,7 +20,6 @@ class FinishRegistrationViewController: UIViewController {
     var avatar = ""
     var company = ""
     
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -29,6 +28,34 @@ class FinishRegistrationViewController: UIViewController {
     }
     
     // MARK: - HELPER METHODS
+    
+    func deleteUser() {
+        let userId = FUser.currentId()
+        
+        // delete user locally
+        UserDefaults.standard.removeObject(forKey: kCURRENTUSER)
+        UserDefaults.standard.removeObject(forKey: "OneSignalId")
+        UserDefaults.standard.synchronize()
+
+        // logout user and delete from firebase db
+        firebase.child(kUSER).child(userId).removeValue { (error, ref) in
+            
+            if let error = error {
+                print("Couldn't delete user from fb db: \(error.localizedDescription)")
+                return
+            }
+            
+            FUser.deleteUser(completion: { (error) in
+                if let error = error {
+                    print("Couldn't delete user from fb auth: \(error.localizedDescription)")
+                    return
+                }
+                
+                self.goToApp()
+            })
+        }
+    }
+    
     func register() {
         let user = FUser.currentUser()!
         
@@ -55,7 +82,6 @@ class FinishRegistrationViewController: UIViewController {
             NotificationCenter.default.post(name: NSNotification.Name.init(rawValue: "userDidLoginNotification"), object: nil, userInfo: ["userId" : FUser.currentId()])
             
             self.goToApp()
-            
         }
     }
     
@@ -67,6 +93,8 @@ class FinishRegistrationViewController: UIViewController {
     
     @IBAction func actionDismissButtonTapped(_ sender: Any) {
         // delete user in Auth
+        
+        deleteUser()
         
         self.dismiss(animated: true, completion: nil)
     }
@@ -98,9 +126,7 @@ class FinishRegistrationViewController: UIViewController {
         }
         
         register()
-        
     }
-    
 }
 
 extension FinishRegistrationViewController: ImagePickerDelegate {
@@ -119,6 +145,4 @@ extension FinishRegistrationViewController: ImagePickerDelegate {
         self.dismiss(animated: true, completion: nil)
         
     }
-    
-    
 }
