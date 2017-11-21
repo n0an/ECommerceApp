@@ -1,118 +1,68 @@
 //
-//  RecentViewController.swift
+//  SearchViewController.swift
 //  ECommerceApp
 //
-//  Created by Anton Novoselov on 15/11/2017.
+//  Created by Anton Novoselov on 20/11/2017.
 //  Copyright © 2017 Anton Novoselov. All rights reserved.
 //
 
 import UIKit
 
-class RecentViewController: UIViewController {
-    
+class SearchViewController: UIViewController {
+
     @IBOutlet weak var collectionView: UICollectionView!
     
     var properties: [Property] = []
     
-    var numberOfPropertiestextField: UITextField!
-    
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        loadProperties(limitNumber: kRECENTPROPERTYLIMIT)
-
-        
+        collectionView.collectionViewLayout.invalidateLayout()
     }
-    
+
     override func viewWillLayoutSubviews() {
         collectionView.collectionViewLayout.invalidateLayout()
     }
     
-    // MARK: - HELPER METHODS
-    func loadProperties(limitNumber: Int) {
-        Property.fetchRecentProperties(limitNumber: limitNumber) { (properties) in
-            
-            guard let properties = properties else { return }
-            guard !properties.isEmpty else { return }
-            
-            self.properties = properties
-            
-            self.collectionView.reloadData()
-            ProgressHUD.dismiss()
-        }
-    }
-    
-    
-    
-    
-    // MARK: - ACTIONS
-    
     @IBAction func actionMixerButtonTapped(_ sender: Any) {
+        let vc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "SearchParametersViewController") as! SearchParametersViewController
         
-        let alertController = UIAlertController(title: "Update", message: "Set the number of properties to display", preferredStyle: .alert)
+        vc.delegate = self
         
-        alertController.addTextField { (numberOfPropertiesTextField) in
-            numberOfPropertiesTextField.placeholder = "Number of Properties"
-            numberOfPropertiesTextField.borderStyle = .roundedRect
-            numberOfPropertiesTextField.keyboardType = .numberPad
-            
-            self.numberOfPropertiestextField = numberOfPropertiesTextField
-        }
-        
-        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel)
-        
-        let updateAction = UIAlertAction(title: "Update", style: .default) { (action) in
-            
-            if self.numberOfPropertiestextField.text != "" && self.numberOfPropertiestextField.text != "0" {
-                ProgressHUD.show("Updating...")
-                self.loadProperties(limitNumber: Int(self.numberOfPropertiestextField.text!)!)
-            }
-            
-        }
-        
-        alertController.addAction(cancelAction)
-        alertController.addAction(updateAction)
-        
-        self.present(alertController, animated: true)
-        
+        self.present(vc, animated: true, completion: nil)
     }
-    
 }
 
-
-extension RecentViewController: UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout {
-    // MARK: - UICollectionViewDataSource
+extension SearchViewController: UICollectionViewDataSource, UICollectionViewDelegate {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return properties.count
-        
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "PropertyCell", for: indexPath) as! PropertyCollectionViewCell
         
-        let property = properties[indexPath.row]
-        
-        cell.generateCell(property: property)
-        
         cell.delegate = self
+        
+        cell.generateCell(property: properties[indexPath.row])
         
         return cell
         
     }
     
-    // MARK: - UICollectionViewDelegate
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         
         // Show selected property
         let propertyVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "PropertyViewController") as! PropertyViewController
         
         propertyVC.property = self.properties[indexPath.row]
+        
         
         self.present(propertyVC, animated: true, completion: nil)
         
@@ -126,8 +76,8 @@ extension RecentViewController: UICollectionViewDataSource, UICollectionViewDele
     
 }
 
-extension RecentViewController: PropertyCollectionViewCellDelegate {
-    
+
+extension SearchViewController: PropertyCollectionViewCellDelegate {
     func didClickStarButton(property: Property) {
         print("didClickStarButton")
         
@@ -174,11 +124,34 @@ extension RecentViewController: PropertyCollectionViewCellDelegate {
     }
 }
 
-
-
-
-
-
+extension SearchViewController: SearchParametersViewControllerDelegate {
+    func didFinishSettingParameters(whereClause: String) {
+        
+        loadProperties(whereClause: whereClause)
+        
+        
+    }
+    
+    // MARK: - Load properties
+    
+    func loadProperties(whereClause: String) {
+        
+        properties = []
+        
+        Property.fetchPropertiesWith(whereClause: whereClause) { (allProps) in
+            
+            if let allProps = allProps {
+                if !allProps.isEmpty {
+                    self.properties = allProps
+                } else {
+                    ProgressHUD.showError("No properties for your search")
+                }
+            }
+            
+            self.collectionView.reloadData()
+        }
+    }
+}
 
 
 

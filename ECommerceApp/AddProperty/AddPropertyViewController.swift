@@ -357,7 +357,16 @@ class AddPropertyViewController: UIViewController {
         
         if !user!.isAgent {
             // check if user can post
-            save()
+            
+            canUserPostProperty(completion: { (canPost) in
+                
+                if canPost {
+                    self.save()
+                } else {
+                   ProgressHUD.showError("You have reached your post limit")
+                }
+                
+            })
             
         } else {
             save()

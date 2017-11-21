@@ -38,6 +38,8 @@
 		1846FA4F1FC22485001E03D9 /* NotificationsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1846FA4E1FC22485001E03D9 /* NotificationsViewController.swift */; };
 		1846FA511FC224A0001E03D9 /* NotificationCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1846FA501FC224A0001E03D9 /* NotificationCell.swift */; };
 		1849938A1FC2265100B625FC /* FBNotification.swift in Sources */ = {isa = PBXBuildFile; fileRef = 184993891FC2265100B625FC /* FBNotification.swift */; };
+		1849938C1FC362E500B625FC /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1849938B1FC362E500B625FC /* SearchViewController.swift */; };
+		1849938E1FC3692F00B625FC /* SearchParametersViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1849938D1FC3692F00B625FC /* SearchParametersViewController.swift */; };
 		1858C0D21FBB7C8B00F1398F /* ProgressHUD.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 1858C0CF1FBB7C8B00F1398F /* ProgressHUD.bundle */; };
 		1858C0D31FBB7C8B00F1398F /* ProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 1858C0D11FBB7C8B00F1398F /* ProgressHUD.m */; };
 		18AE45031FC1B709002E6283 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18AE45021FC1B709002E6283 /* ProfileViewController.swift */; };
@@ -82,6 +84,8 @@
 		1846FA4E1FC22485001E03D9 /* NotificationsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationsViewController.swift; sourceTree = "<group>"; };
 		1846FA501FC224A0001E03D9 /* NotificationCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationCell.swift; sourceTree = "<group>"; };
 		184993891FC2265100B625FC /* FBNotification.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FBNotification.swift; sourceTree = "<group>"; };
+		1849938B1FC362E500B625FC /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
+		1849938D1FC3692F00B625FC /* SearchParametersViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchParametersViewController.swift; sourceTree = "<group>"; };
 		1858C0CF1FBB7C8B00F1398F /* ProgressHUD.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = ProgressHUD.bundle; sourceTree = "<group>"; };
 		1858C0D01FBB7C8B00F1398F /* ProgressHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProgressHUD.h; sourceTree = "<group>"; };
 		1858C0D11FBB7C8B00F1398F /* ProgressHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProgressHUD.m; sourceTree = "<group>"; };
@@ -156,8 +160,9 @@
 				183EBC251FBD719C00208AEC /* Model */,
 				183EBC1E1FBCC76B00208AEC /* Settings */,
 				18259C711FBA3687007456A3 /* Main.storyboard */,
-				15985EB31FC32AB600387193 /* PushNotifications.swift */,
 				18AE45021FC1B709002E6283 /* ProfileViewController.swift */,
+				1849938B1FC362E500B625FC /* SearchViewController.swift */,
+				1849938D1FC3692F00B625FC /* SearchParametersViewController.swift */,
 				18259C741FBA3687007456A3 /* Assets.xcassets */,
 				18259C761FBA3687007456A3 /* LaunchScreen.storyboard */,
 				18259C791FBA3687007456A3 /* Info.plist */,
@@ -239,6 +244,7 @@
 				15E9B2981FBB022D00D1141C /* FUser.swift */,
 				183EBC261FBD71AD00208AEC /* Property.swift */,
 				184993891FC2265100B625FC /* FBNotification.swift */,
+				15985EB31FC32AB600387193 /* PushNotifications.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -438,6 +444,7 @@
 				183EBC291FBD862200208AEC /* AddPropertyViewController.swift in Sources */,
 				18259C6E1FBA3687007456A3 /* AppDelegate.swift in Sources */,
 				183E08FD1FBE251B0035106A /* PropertyViewController.swift in Sources */,
+				1849938E1FC3692F00B625FC /* SearchParametersViewController.swift in Sources */,
 				15E9B2951FBAF09100D1141C /* Constants.swift in Sources */,
 				183E08F91FBDF9040035106A /* MapViewController.swift in Sources */,
 				15E9B2971FBAF2D800D1141C /* RegisterViewController.swift in Sources */,
@@ -448,6 +455,7 @@
 				183E09031FBE27A00035106A /* MapViewCell.swift in Sources */,
 				15985EB41FC32AB600387193 /* PushNotifications.swift in Sources */,
 				15E9B2991FBB022D00D1141C /* FUser.swift in Sources */,
+				1849938C1FC362E500B625FC /* SearchViewController.swift in Sources */,
 				183EBC231FBCC8AB00208AEC /* PropertyCollectionViewCell.swift in Sources */,
 				183E09111FC198940035106A /* GalleryCollectionViewCell.swift in Sources */,
 				183E090C1FC1875F0035106A /* MyPropertiesViewController.swift in Sources */,
