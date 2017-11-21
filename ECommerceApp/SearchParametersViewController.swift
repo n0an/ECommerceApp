@@ -118,7 +118,7 @@ class SearchParametersViewController: UIViewController {
     }
     
     @objc func toolbarDonePressed() {
-        
+        self.view.endEditing(true)
     }
     
     @IBAction func actionBackButtonTapped(_ sender: Any) {
@@ -154,8 +154,6 @@ class SearchParametersViewController: UIViewController {
         furnishedSwitchValue = !furnishedSwitchValue
     }
     
-    
-
 }
 
 
@@ -205,6 +203,74 @@ extension SearchParametersViewController: UIPickerViewDataSource, UIPickerViewDe
             return yearArray[row]
         default:
             return nil
+        }
+        
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+        
+        var rowValue = row
+        
+        switch pickerView {
+        case propertyTypePicker:
+            if rowValue == 0 {
+                rowValue = 1
+            }
+            propertyTypeTextField.text = propertyTypes[rowValue]
+            
+        case advertisementTypePicker:
+            if rowValue == 0 {
+                rowValue = 1
+            }
+            advertisementTypeTextField.text = advertismentTypes[rowValue]
+            
+        case bedroomPicker:
+            bedroomsTextField.text = bedroomsArray[row]
+            
+        case bathroomPicker:
+            bathroomsTextField.text = bathroomsArray[row]
+            
+        case pricePicker:
+            if rowValue == 0 {
+                rowValue = 1
+            }
+            
+            if component == 0 {
+                
+                minPrice = minPriceArray[rowValue]
+                
+//                let minStr = minPriceArray[rowValue]
+//                var selectedAnotherRow = pricePicker.selectedRow(inComponent: 1)
+//
+//                if selectedAnotherRow == 0 {
+//                    selectedAnotherRow = 1
+//                }
+//
+//                let maxStr = maxPriceArray[selectedAnotherRow]
+//                priceTextField.text = "\(minStr) - \(maxStr)"
+                
+            } else {
+                
+                maxPrice = maxPriceArray[rowValue]
+                
+//                let maxStr = maxPriceArray[rowValue]
+//                var selectedAnotherRow = pricePicker.selectedRow(inComponent: 0)
+//
+//                if selectedAnotherRow == 0 {
+//                    selectedAnotherRow = 1
+//                }
+//
+//                let minStr = minPriceArray[selectedAnotherRow]
+//                priceTextField.text = "\(minStr) - \(maxStr)"
+            }
+            
+            priceTextField.text = minPrice + "-" + maxPrice
+            
+        case yearPicker:
+            buildYearTextField.text = "\(yearArray[row])"
+            
+        default:
+            break
         }
         
         
