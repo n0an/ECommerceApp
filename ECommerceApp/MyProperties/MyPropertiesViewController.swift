@@ -133,7 +133,28 @@ extension MyPropertiesViewController: PropertyCollectionViewCellDelegate {
         
         let actionMakeTop = UIAlertAction(title: topStatus, style: .default) { (action) in
             
+            let coins = FUser.currentUser()!.coins
             
+            if coins >= 10 && !isInTop {
+                
+                updateCurrentUser(withValues: [kCOINS: coins - 10], withBlock: { (success) in
+                    if success {
+                        let expDate = Calendar.current.date(byAdding: .day, value: 7, to: Date())
+                        
+                        property.inTopUntil = expDate
+                        property.saveProperty()
+                        
+                        self.loadProperties()
+                    }
+                })
+                
+            } else {
+                if isInTop {
+                    ProgressHUD.showError("Already in top")
+                } else {
+                    ProgressHUD.showError("Insufficient coins!")
+                }
+            }
             
         }
         
