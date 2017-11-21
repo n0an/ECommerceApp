@@ -230,9 +230,16 @@ class FUser {
             }
         }
         
-        
-        
     }
+    
+    class func deleteUser(completion: @escaping (_ error: Error?) -> Void) {
+        let user = Auth.auth().currentUser
+        
+        user?.delete(completion: { (error) in
+            completion(error)
+        })
+    }
+    
     
     
 }
