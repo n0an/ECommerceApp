@@ -81,13 +81,14 @@ class RegisterViewController: UIViewController {
                 if shouldLogin {
                     // go to mainVC
                     print("go to main view")
+                    self.goToApp()
                     
                 } else {
                     // go to finish register view
                     print("go to finish register view")
-
+                    self.performSegue(withIdentifier: "registerToFinishRegisterSeg", sender: nil)
+                    
                 }
-                
                 
             })
         }
