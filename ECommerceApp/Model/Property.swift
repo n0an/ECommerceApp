@@ -125,7 +125,26 @@ class Property: NSObject {
 }
 
 
-
+func canUserPostProperty(completion: @escaping (_ canPost: Bool) -> Void) {
+    
+    let queryBuilder = DataQueryBuilder()
+    let whereClause = "ownerId = '\(FUser.currentId())'"
+    
+    queryBuilder!.setWhereClause(whereClause)
+    
+    let dataStore = backendless!.data.of(Property().ofClass())
+    
+    dataStore!.find(queryBuilder, response: { (allProps) in
+        
+        allProps!.count == 0 ? completion(true) : completion(false)
+        
+    }, error: { (fault) in
+        print("Fault whereClause \(fault!.message)")
+        completion(true)
+    })
+    
+    
+}
 
 
 
