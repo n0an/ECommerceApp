@@ -59,16 +59,18 @@ extension IAPService: SKPaymentTransactionObserver {
         
         for transaction in transactions {
             
-//            print("Transaction - status: \(transaction.transactionState.status()) , transaction.payment.productIdentifier: \(transaction.payment.productIdentifier)")
-            
-            print("Transaction - status: \(transaction.transactionState.status() , transaction.payment.productIdentifier)")
-
+            print("Transaction - \(transaction.transactionState.status() , transaction.payment.productIdentifier)")
             
             switch transaction.transactionState {
+                
             case .purchasing:
                 break
+                
             case .purchased:
                 queue.finishTransaction(transaction)
+                
+                FUser.currentUser()?.purchase(productId: transaction.payment.productIdentifier)
+                
             default:
                 queue.finishTransaction(transaction)
             }

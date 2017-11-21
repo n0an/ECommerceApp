@@ -187,6 +187,29 @@ class FUser {
         
     }
     
+    // MARK: -IAP methods
+    func purchase(productId: String) {
+        
+        switch productId {
+        case IAPProduct.coins.rawValue:
+            print("User has purchased coins, saving")
+            let newCoins = FUser.currentUser()!.coins + 10
+            updateCurrentUser(withValues: [kCOINS: newCoins], withBlock: { (success) in
+                
+            })
+            
+        case IAPProduct.agentSubscription.rawValue:
+            print("User has purchased agent subscription, saving")
+            updateCurrentUser(withValues: [kISAGENT: true], withBlock: { (success) in
+                
+            })
+
+        default:
+            break
+        }
+        
+    }
+    
     
     // MARK: - LogOut
     
