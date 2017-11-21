@@ -148,6 +148,19 @@ class ProfileViewController: UIViewController {
         return image
     }
     
+    func buyCoins() {
+        IAPService.shared.purchase(product: .coins)
+        print("Buy coins")
+    }
+    
+    func restorePurchase() {
+        IAPService.shared.restorePurchase()
+    }
+    
+    func agentSubscription() {
+        IAPService.shared.purchase(product: .agentSubscription)
+    }
+    
     @IBAction func actionBackButtonTapped(_ sender: Any) {
         self.dismiss(animated: true, completion: nil)
 
@@ -162,16 +175,22 @@ class ProfileViewController: UIViewController {
         let accountTypeString = user.isAgent ? "You are Agent" : "Become an Agent"
         
         let actionAccountType = UIAlertAction(title: accountTypeString, style: .default) { (action) in
-            
+            if !user.isAgent {
+                
+                self.agentSubscription()
+                
+            }
         }
         
         let actionRestorePurchase = UIAlertAction(title: "Restore purchase", style: .default) { (action) in
             
+            self.restorePurchase()
             
         }
         
         let actionBuyCoins = UIAlertAction(title: "Buy Coins", style: .default) { (action) in
-            
+            self.buyCoins()
+
         }
         
         let actionSaveChanges = UIAlertAction(title: "Save changes", style: .default) { (action) in
@@ -215,9 +234,11 @@ class ProfileViewController: UIViewController {
     
     @IBAction func actionBuyCoinsButtonTapped(_ sender: Any) {
         
-        
+        self.buyCoins()
         
     }
+    
+    
     
     @IBAction func actionChangeAvatarButtonTapped(_ sender: Any) {
         let imagePickerController = ImagePickerController()
