@@ -69,3 +69,7 @@ public let kDEVICEID = "deviceId"
 
 //other
 public let kTEMPFAVORITID = "tempID"
+
+
+
+

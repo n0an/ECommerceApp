@@ -26,6 +26,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         backendless!.initApp(BACKENDLESS_APP_ID, apiKey: BACKENDLESS_API_KEY)
         
+        IAPService.shared.getProducts()
+        
         OneSignal.initWithLaunchOptions(launchOptions, appId: kONESIGNALAPPID, handleNotificationReceived: nil, handleNotificationAction: nil, settings: nil)
         
         Auth.auth().addStateDidChangeListener { (auth, user) in
