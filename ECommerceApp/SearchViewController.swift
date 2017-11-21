@@ -18,11 +18,21 @@ class SearchViewController: UIViewController {
         super.viewDidLoad()
 
     }
-
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        collectionView.collectionViewLayout.invalidateLayout()
+    }
+
+    override func viewWillLayoutSubviews() {
+        collectionView.collectionViewLayout.invalidateLayout()
+    }
     
     @IBAction func actionMixerButtonTapped(_ sender: Any) {
         let vc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "SearchParametersViewController") as! SearchParametersViewController
+        
+        vc.delegate = self
         
         self.present(vc, animated: true, completion: nil)
     }
@@ -52,6 +62,7 @@ extension SearchViewController: UICollectionViewDataSource, UICollectionViewDele
         let propertyVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "PropertyViewController") as! PropertyViewController
         
         propertyVC.property = self.properties[indexPath.row]
+        
         
         self.present(propertyVC, animated: true, completion: nil)
         
@@ -111,6 +122,34 @@ extension SearchViewController: PropertyCollectionViewCellDelegate {
     }
 }
 
+extension SearchViewController: SearchParametersViewControllerDelegate {
+    func didFinishSettingParameters(whereClause: String) {
+        
+        loadProperties(whereClause: whereClause)
+        
+        
+    }
+    
+    // MARK: - Load properties
+    
+    func loadProperties(whereClause: String) {
+        
+        properties = []
+        
+        Property.fetchPropertiesWith(whereClause: whereClause) { (allProps) in
+            
+            if let allProps = allProps {
+                if !allProps.isEmpty {
+                    self.properties = allProps
+                } else {
+                    ProgressHUD.showError("No properties for your search")
+                }
+            }
+            
+            self.collectionView.reloadData()
+        }
+    }
+}
 
 
 

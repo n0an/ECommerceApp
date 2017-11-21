@@ -864,6 +864,7 @@
                                 <connections>
                                     <outlet property="dataSource" destination="aZU-qX-2tz" id="qX0-nF-lDR"/>
                                     <outlet property="delegate" destination="aZU-qX-2tz" id="WgA-Hg-OE9"/>
+                                    <outlet property="prefetchDataSource" destination="aZU-qX-2tz" id="Vp6-jK-qVh"/>
                                 </connections>
                             </collectionView>
                         </subviews>

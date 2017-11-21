@@ -8,6 +8,10 @@
 
 import UIKit
 
+protocol SearchParametersViewControllerDelegate: class {
+    func didFinishSettingParameters(whereClause: String)
+}
+
 class SearchParametersViewController: UIViewController {
 
     @IBOutlet weak var scrollView: UIScrollView!
@@ -51,6 +55,7 @@ class SearchParametersViewController: UIViewController {
     
     var activeTextField: UITextField?
 
+    weak var delegate: SearchParametersViewControllerDelegate?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -117,8 +122,83 @@ class SearchParametersViewController: UIViewController {
         
     }
     
+    
+    // MARK: - ACTIOINS
     @objc func toolbarDonePressed() {
         self.view.endEditing(true)
+        
+        guard advertisementTypeTextField.text != "" && propertyTypeTextField.text != "" else {
+            ProgressHUD.showError("Missing required text fields")
+            print("invalid search parameters")
+            return
+        }
+        
+        whereClause = "advertisementType = '\(advertisementTypeTextField.text!)' and properyType = '\(propertyTypeTextField.text!)'"
+        
+        if bedroomsTextField.text != "" && bedroomsTextField.text != "Any" {
+            let bedroomNumber = bedroomsTextField.text!.split(separator: "+").first
+            
+            whereClause += " and numberOfRooms >= '\(bedroomNumber!)'"
+        }
+        
+        if bathroomsTextField.text != "" && bathroomsTextField.text != "Any" {
+            let bathroomNumber = bathroomsTextField.text!.split(separator: "+").first
+            
+            whereClause += " and numberOfBathrooms >= '\(bathroomNumber!)'"
+        }
+        
+        if buildYearTextField.text != "" && buildYearTextField.text != "Any" {
+            
+            whereClause += " and buildYear = '\(buildYearTextField.text!)'"
+        }
+        
+        if priceTextField.text != "" && priceTextField.text != "Any - Any" && priceTextField.text != "Any -" && priceTextField.text != "- Any" {
+            
+            if let minPriceVal = Int(minPrice) {
+                whereClause += " and price >= \(minPriceVal)"
+            }
+            
+            if let maxPriceVal = Int(maxPrice) {
+                whereClause += " and price <= \(maxPriceVal)"
+            }
+        }
+        
+        if cityTextField.text != "" {
+            whereClause += " and city = '\(cityTextField.text!)'"
+        }
+        
+        if countryTextField.text != "" {
+            whereClause += " and country = '\(countryTextField.text!)'"
+        }
+        
+        if propertySizeTextField.text != "" {
+            whereClause += " and size >= '\(propertySizeTextField.text!)'"
+        }
+        
+        if furnishedSwitchValue {
+            whereClause += " and isFurnished = true"
+        }
+        
+        if centralHeatingSwitchValue {
+            whereClause += " and centralHeating = true"
+        }
+        
+        if airConditionerSwitchValue {
+            whereClause += " and airConditioner = true"
+        }
+        
+        if solarWaterSwitchValue {
+            whereClause += " and solarWaterHeating = true"
+        }
+        
+        if storeRoomSwitchValue {
+            whereClause += " and storeRoom = true"
+        }
+        
+        delegate?.didFinishSettingParameters(whereClause: whereClause)
+        
+        self.dismiss(animated: true, completion: nil)
+        
     }
     
     @IBAction func actionBackButtonTapped(_ sender: Any) {
@@ -264,7 +344,7 @@ extension SearchParametersViewController: UIPickerViewDataSource, UIPickerViewDe
 //                priceTextField.text = "\(minStr) - \(maxStr)"
             }
             
-            priceTextField.text = minPrice + "-" + maxPrice
+            priceTextField.text = minPrice + " - " + maxPrice
             
         case yearPicker:
             buildYearTextField.text = "\(yearArray[row])"
