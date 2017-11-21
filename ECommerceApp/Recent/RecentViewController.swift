@@ -131,6 +131,10 @@ extension RecentViewController: PropertyCollectionViewCellDelegate {
     func didClickStarButton(property: Property) {
         print("didClickStarButton")
         
+        guard isUserLoggedIn(viewController: self) else {
+            return
+        }
+        
         if let currentUser = FUser.currentUser() {
             
             // check if property is in favourite
@@ -165,8 +169,6 @@ extension RecentViewController: PropertyCollectionViewCellDelegate {
                 
             }
             
-        } else {
-            // show login/register screen
         }
         
     }
