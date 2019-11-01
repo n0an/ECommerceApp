@@ -308,7 +308,6 @@
 				18259C671FBA3687007456A3 /* Frameworks */,
 				18259C681FBA3687007456A3 /* Resources */,
 				A176AE5912F3B74D72278250 /* [CP] Embed Pods Frameworks */,
-				A61408898FF1E9DA2946C27E /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -399,7 +398,7 @@
 			files = (
 			);
 			inputPaths = (
-				"${SRCROOT}/Pods/Target Support Files/Pods-ECommerceApp/Pods-ECommerceApp-frameworks.sh",
+				"${PODS_ROOT}/Target Support Files/Pods-ECommerceApp/Pods-ECommerceApp-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/DACircularProgress/DACircularProgress.framework",
 				"${BUILT_PRODUCTS_DIR}/GTMSessionFetcher/GTMSessionFetcher.framework",
 				"${BUILT_PRODUCTS_DIR}/GoogleToolboxForMac/GoogleToolboxForMac.framework",
@@ -424,22 +423,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-ECommerceApp/Pods-ECommerceApp-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		A61408898FF1E9DA2946C27E /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Copy Pods Resources";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-ECommerceApp/Pods-ECommerceApp-resources.sh\"\n";
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-ECommerceApp/Pods-ECommerceApp-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
